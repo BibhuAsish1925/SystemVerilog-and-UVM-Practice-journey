@@ -1,0 +1,12 @@
+# run 1000ns
+After assigning X:
+bit   = 0
+logic = x
+
+After assigning Z:
+bit   = 0
+logic = z
+
+After assigning 1:
+bit   = 1
+logic = 1
