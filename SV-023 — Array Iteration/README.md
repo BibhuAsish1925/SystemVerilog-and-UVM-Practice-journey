@@ -100,48 +100,6 @@ Array iteration is frequently used in verification for:
 * Inspecting queues and other SystemVerilog collections.
 * Writing concise testbench code without manually managing indexes.
 
-## Complete Runnable Code
-
-```systemverilog id="n8q4fd"
-module sv_023_array_iteration;
-
-    int data[5] = '{10, 20, 30, 40, 50};
-    int sum;
-
-    initial begin
-        $display("Array traversal:");
-
-        // Iterator variable i represents the array index
-        foreach (data[i]) begin
-            $display("data[%0d] = %0d", i, data[i]);
-        end
-
-        // Use iterator to calculate the sum
-        sum = 0;
-
-        foreach (data[i]) begin
-            sum += data[i];
-        end
-
-        $display("\nSum = %0d", sum);
-    end
-
-endmodule
-```
-
-## Expected Output
-
-```text id="t2x6qm"
-Array traversal:
-data[0] = 10
-data[1] = 20
-data[2] = 30
-data[3] = 40
-data[4] = 50
-
-Sum = 150
-```
-
 ## Key Takeaways
 
 * `foreach` provides convenient array traversal.
