@@ -136,19 +136,6 @@ module sv_009_union;
 endmodule
 ```
 
-## Expected Output
-
-```text
-Unpacked Union:
-int_value  = 12345678
-byte_value = a5
-
-Packed Union:
-bits        = a5
-byte_value  = a5
-high_nibble = 5
-```
-
 ### Key Syntax
 
 Unpacked union:

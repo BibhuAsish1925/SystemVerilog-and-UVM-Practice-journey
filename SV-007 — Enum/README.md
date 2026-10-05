@@ -155,45 +155,6 @@ the result is:
 4
 ```
 
-## Complete Example
-
-```systemverilog
-module sv_007_enum;
-
-    typedef enum {
-        IDLE,
-        START,
-        ACTIVE,
-        DONE
-    } state_t;
-
-    state_t state;
-
-    initial begin
-        state = ACTIVE;
-
-        $display("Current = %s", state.name());
-        $display("First   = %s", state.first().name());
-        $display("Last    = %s", state.last().name());
-        $display("Next    = %s", state.next().name());
-        $display("Previous= %s", state.prev().name());
-        $display("Number  = %0d", state.num());
-    end
-
-endmodule
-```
-
-## Expected Output
-
-```text
-Current = ACTIVE
-First   = IDLE
-Last    = DONE
-Next    = DONE
-Previous= START
-Number  = 4
-```
-
 ## Verification Relevance
 
 Enums are useful for representing a fixed set of meaningful states,
