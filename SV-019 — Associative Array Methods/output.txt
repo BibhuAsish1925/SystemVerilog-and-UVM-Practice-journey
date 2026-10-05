@@ -1,0 +1,20 @@
+# run 1000ns
+Initial number of elements = 4
+First index = 10
+Last index  = 80
+
+Exists:
+data[20] exists = 1
+data[30] exists = 0
+
+Forward traversal:
+data[10] = 100
+data[20] = 200
+data[50] = 500
+data[80] = 800
+
+Previous index before 50 = 20
+
+After delete(50):
+Number of elements = 3
+Exists(50) = 0
