@@ -1,0 +1,10 @@
+# run 1000ns
+bit       = 1
+logic     = x
+reg       = z
+byte      = 100
+shortint  = 1000
+int       = 100000
+longint   = 1000000
+integer   = -50
+time      = 10000
