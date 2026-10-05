@@ -1,0 +1,5 @@
+# run 1000ns
+[0] Start
+[10000] First task call
+[20000] Second task call
+[20000] End
