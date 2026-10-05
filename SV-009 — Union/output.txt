@@ -1,0 +1,9 @@
+# run 1000ns
+Unpacked Union:
+int_value  = 12345678
+byte_value = a5
+
+Packed Union:
+bits         = a5
+byte_value   = a5
+signed_value = -91

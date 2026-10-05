@@ -1,0 +1,11 @@
+# run 1000ns
+Unpacked Struct:
+name = Bibhu
+age  = 21
+
+Packed Struct:
+opcode = a
+data   = 5a
+packet = a5a
+packet[11:8] = a
+packet[7:0]  = 5a

@@ -1,0 +1,9 @@
+# run 1000ns
+$bits(data)       = 8
+$bits(range_data) = 12
+$size(array)      = 5
+$clog2(10)        = 4
+$left(array)      = 0
+$right(array)     = 4
+$high(array)      = 4
+$low(array)       = 0

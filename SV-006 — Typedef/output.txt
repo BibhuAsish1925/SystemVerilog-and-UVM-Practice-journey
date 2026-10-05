@@ -1,0 +1,6 @@
+# run 1000ns
+data  = a5
+count = 100
+state = IDLE
+state = START
+state = DONE

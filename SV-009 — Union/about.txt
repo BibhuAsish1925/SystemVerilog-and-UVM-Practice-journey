@@ -1,0 +1,184 @@
+# 009 — SV-009 — Union
+
+## Union
+
+A `union` allows multiple members to **share the same storage location**.
+
+The important difference from a `struct` is:
+
+* **Struct:** each member has separate storage.
+* **Union:** all members share the same storage.
+
+Therefore, writing to one union member changes the value that is seen through the other members.
+
+SystemVerilog supports both **unpacked unions** and **packed unions**.
+
+### 1. Unpacked Union
+
+An unpacked union can contain members with different data types.
+
+```systemverilog id="f70g6w"
+typedef union {
+    int  int_value;
+    byte byte_value;
+} data_u;
+```
+
+Both `int_value` and `byte_value` use the same storage area.
+
+```systemverilog id="k7q1ph"
+data.int_value = 32'h12345678;
+data.byte_value = 8'hA5;
+```
+
+When `byte_value` is written, the shared storage is updated.
+
+### 2. Packed Union
+
+A packed union allows the shared storage to be treated as packed bits through different member declarations.
+
+```systemverilog id="m3jz8c"
+typedef union packed {
+    logic [7:0] byte_value;
+    logic [3:0] high_nibble;
+    logic [7:0] bits;
+} packed_u;
+```
+
+For example:
+
+```systemverilog id="d6qk4e"
+packet.bits = 8'hA5;
+```
+
+The same packed storage can then be viewed through another member:
+
+```systemverilog id="r8s3yd"
+packet.byte_value
+packet.high_nibble
+```
+
+For `8'hA5`:
+
+* `byte_value` = `A5`
+* `high_nibble` = `5`
+
+### Struct vs Union
+
+| Feature                       | Struct               | Union                                  |
+| ----------------------------- | -------------------- | -------------------------------------- |
+| Member storage                | Separate             | Shared                                 |
+| Members coexist independently | Yes                  | No                                     |
+| Packed version                | Yes                  | Yes                                    |
+| Main purpose                  | Group related fields | Interpret the same storage differently |
+
+### Why Union Matters in Verification
+
+Unions can be useful when the same data needs to be interpreted in different forms, such as:
+
+* Different views of packet data
+* Bit-level and field-level interpretation
+* Data representation conversions
+* Protocol-related data handling
+
+The key idea is **shared storage**.
+
+## Complete Runnable Code
+
+**Code type:** SystemVerilog simulation/demo — no DUT.
+
+```systemverilog id="6v4m0x"
+module sv_009_union;
+
+    // Unpacked union
+    typedef union {
+        int  int_value;
+        byte byte_value;
+    } data_u;
+
+    /*// Packed union
+    typedef union packed {
+        logic [7:0] byte_value;
+        logic [3:0] high_nibble;  // ❌ Different size
+        logic [7:0] bits;
+    } packed_u;*/
+
+    typedef union packed {
+        logic [7:0] byte_value;
+        logic [7:0] bits;
+        logic signed [7:0] signed_value;
+    } packed_u;
+
+    data_u   data;
+    packed_u packet;
+
+    initial begin
+        // Both members use the same storage
+        data.int_value = 32'h12345678;
+
+        $display("Unpacked Union:");
+        $display("int_value  = %h", data.int_value);
+
+        // Writing another member replaces the shared storage
+        data.byte_value = 8'hA5;
+
+        $display("byte_value = %h", data.byte_value);
+
+        // Packed union
+        packet.bits = 8'hA5;
+
+        $display("\nPacked Union:");
+        $display("bits        = %h", packet.bits);
+        $display("byte_value  = %h", packet.byte_value);
+        $display("high_nibble = %h", packet.high_nibble);
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+Unpacked Union:
+int_value  = 12345678
+byte_value = a5
+
+Packed Union:
+bits        = a5
+byte_value  = a5
+high_nibble = 5
+```
+
+### Key Syntax
+
+Unpacked union:
+
+```systemverilog
+typedef union {
+    type member1;
+    type member2;
+} union_name;
+```
+
+Packed union:
+
+```systemverilog
+typedef union packed {
+    logic [7:0] byte_value;
+    logic [3:0] high_nibble;
+} packed_u;
+```
+
+```systemverilog
+    typedef union packed {
+        logic [7:0] byte_value;
+        logic [7:0] bits;
+        logic signed [7:0] signed_value;
+    } packed_u;
+```
+
+The central concept is:
+
+> **A union provides multiple views of the same storage.**
+
+Unlike a struct, changing one union member changes the shared storage seen through the other members.

@@ -1,0 +1,6 @@
+# run 1000ns
+WIDTH      = 16
+DEPTH      = 64
+ADDR_WIDTH = 6
+data width = 16 bits
+addr width = 6 bits

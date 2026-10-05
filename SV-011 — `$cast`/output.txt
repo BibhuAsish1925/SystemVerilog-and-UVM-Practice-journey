@@ -1,0 +1,4 @@
+# run 1000ns
+Cast 1: SUCCESS
+Child-specific method
+Cast 2: FAILED

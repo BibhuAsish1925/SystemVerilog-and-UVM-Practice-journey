@@ -1,0 +1,5 @@
+# run 1000ns
+Original data    = a5
+int'(data)       = 165
+logic'(1'b1)     = 1
+Extended data    = 00a5

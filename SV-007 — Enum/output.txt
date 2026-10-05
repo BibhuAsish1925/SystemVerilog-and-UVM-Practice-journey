@@ -1,0 +1,7 @@
+# run 1000ns
+Current = ACTIVE
+First   = ACTIVE
+Last    = ACTIVE
+Next    = ACTIVE
+Previous= ACTIVE
+Number  = 4
