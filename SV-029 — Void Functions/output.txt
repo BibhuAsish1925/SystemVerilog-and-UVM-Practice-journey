@@ -1,0 +1,4 @@
+# run 1000ns
+Sum = 30
+Product = 20
+Return value discarded using void'()

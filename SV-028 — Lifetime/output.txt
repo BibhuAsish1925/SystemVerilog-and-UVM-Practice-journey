@@ -1,0 +1,10 @@
+# run 1000ns
+Static lifetime:
+Call 1 = 1
+Call 2 = 2
+Call 3 = 3
+
+Automatic lifetime:
+Call 1 = 1
+Call 2 = 1
+Call 3 = 1

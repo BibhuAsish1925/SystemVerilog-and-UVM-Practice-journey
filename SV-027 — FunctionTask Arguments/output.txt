@@ -1,0 +1,5 @@
+# run 1000ns
+input  value  = 25
+output result = 30
+inout data     = 6
+ref data       = 15
