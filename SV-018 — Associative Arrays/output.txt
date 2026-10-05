@@ -1,0 +1,14 @@
+# run 1000ns
+Integer-indexed array:
+scores[10]  = 95
+scores[25]  = 88
+scores[100] = 76
+
+String-indexed array:
+marks[Math]    = 95
+marks[Physics] = 88
+marks[Verilog] = 92
+
+Sparse storage:
+scores.size() = 3
+marks.size()  = 3
