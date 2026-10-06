@@ -1,0 +1,5 @@
+# run 1000ns
+Data = 100
+Data = 200
+Shared count = 2
+Total objects created = 2

@@ -1,0 +1,8 @@
+# run 1000ns
+Upcasting:
+Write transaction | Data = 100
+
+Downcasting: SUCCESS
+Write-specific method
+
+Wrong cast: FAILED

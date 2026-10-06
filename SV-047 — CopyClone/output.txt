@@ -1,0 +1,4 @@
+# run 1000ns
+Original | Name = Original | Data = 100
+Copied | Name = Original | Data = 200
+Cloned | Name = Original | Data = 300

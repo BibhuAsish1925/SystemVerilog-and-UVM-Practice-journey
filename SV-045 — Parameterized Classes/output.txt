@@ -1,0 +1,4 @@
+# run 1000ns
+WIDTH = 8 | DATA = a5
+WIDTH = 16 | DATA = 1234
+WIDTH = 32 | DATA = 12345678
