@@ -1,4 +1,4 @@
-## 046 — SV-046 — Object Copying
+# 046 — SV-046 — Object Copying
 
 SystemVerilog class variables are **handles** to objects. Assigning one class handle to another does not automatically create a new object.
 
