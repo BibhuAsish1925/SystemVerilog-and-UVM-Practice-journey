@@ -1,0 +1,3 @@
+# run 1000ns
+Parent: Data = 100
+Child: Name = Transaction-1 | Data = 100

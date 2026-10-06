@@ -1,0 +1,5 @@
+# run 1000ns
+Public    = 100
+Protected = 20
+Local     = 30
+Child access to protected = 20

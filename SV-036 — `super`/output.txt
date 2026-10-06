@@ -1,0 +1,5 @@
+# run 1000ns
+Parent constructor called
+Child constructor called
+Parent method: Data = 100
+Child method: Name = Transaction-1
