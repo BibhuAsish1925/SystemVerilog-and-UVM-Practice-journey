@@ -1,0 +1,12 @@
+# run 1000ns
+Handle Copy:
+original.data     = 200
+handle_copy.data  = 200
+
+Shallow Copy:
+original.p.value = 75
+shallow.p.value  = 75
+
+Deep Copy:
+original.p.value = 75
+deep.p.value     = 100
