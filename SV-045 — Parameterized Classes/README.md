@@ -1,4 +1,4 @@
-## 045 — SV-045 — Parameterized Classes
+# 045 — SV-045 — Parameterized Classes
 
 A **parameterized class** allows a class to be configured with parameters when the class is instantiated. This makes the class reusable for different data widths or configurations.
 
