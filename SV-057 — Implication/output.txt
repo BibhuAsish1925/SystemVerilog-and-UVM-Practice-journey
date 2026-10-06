@@ -1,0 +1,11 @@
+# run 1000ns
+Transaction 1: write = 1 | data = 35
+Transaction 2: write = 1 | data = 30
+Transaction 3: write = 1 | data = 32
+Transaction 4: write = 0 | data = 1273925271
+Transaction 5: write = 1 | data = 15
+Transaction 6: write = 1 | data = 31
+Transaction 7: write = 0 | data = 1129531127
+Transaction 8: write = 0 | data = 584231234
+Transaction 9: write = 1 | data = 49
+Transaction 10: write = 0 | data = 661266734
