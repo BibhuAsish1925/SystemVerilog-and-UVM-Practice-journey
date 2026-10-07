@@ -1,5 +1,3 @@
-# Phase 7 — Interfaces & Testbench Connectivity
-
 # 087 — SV-087 — Clocking Block + Driver
 
 ## Introduction
