@@ -1,0 +1,8 @@
+# run 1000ns
+[5000] Start event triggered
+[5000] Start event received
+[10000] Data event triggered
+[10000] Data event received
+[15000] Done event triggered
+[15000] Done event received
+[15000] Events occurred in required order

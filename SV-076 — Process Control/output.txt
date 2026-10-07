@@ -1,0 +1,9 @@
+# run 1000ns
+[0] Worker started
+[2000] Worker suspended | Status = SUSPENDED
+[5000] Worker resumed | Status = WAITING
+[10000] Worker reached first point
+[20000] Worker completed
+[20000] Worker finished | Status = FINISHED
+[20000] Kill-process started
+[25000] Kill-process terminated | Status = KILLED

@@ -1,0 +1,7 @@
+# run 1000ns
+[0] Main process started
+[0] Main process continues
+[5000] Background process 2 completed
+[10000] Background process 1 completed
+[15000] Background process 3 completed
+[20000] Main process completed

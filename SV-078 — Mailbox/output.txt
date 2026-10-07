@@ -1,0 +1,9 @@
+# run 1000ns
+[0] After put(): mailbox size = 2
+[0] peek()    = 10
+[0] try_peek() = 10
+[0] get()     = 10
+[0] try_get() = 20
+[0] try_put(30) = SUCCESS
+[0] Final get() = 30
+[0] Final mailbox size = 0

@@ -1,0 +1,6 @@
+# run 1000ns
+[0] Consumer: Waiting for event
+[10000] Producer: Transaction completed
+[10000] Producer: Event triggered
+[10000] Monitor: Event was triggered
+[10000] Consumer: Event received

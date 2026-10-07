@@ -1,0 +1,7 @@
+# run 1000ns
+[0] Current process status = RUNNING
+[0] Worker started
+[0] Worker status = RUNNING
+[2000] Worker process status = WAITING
+[10000] Worker completed
+[10000] Worker process status after completion = FINISHED

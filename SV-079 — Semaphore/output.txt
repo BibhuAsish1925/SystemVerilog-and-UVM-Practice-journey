@@ -1,0 +1,8 @@
+# run 1000ns
+[0] Process 1 requesting 1 key
+[0] Process 1 acquired key
+[2000] Process 2 requesting 1 key
+[2000] Process 2 acquired key
+[7000] Process 2 returned key
+[10000] Process 1 returned key
+[10000] All processes completed
