@@ -1,0 +1,5 @@
+# run 1000ns
+[5000] @: Detected clock rising edge
+[12000] wait: Enable became 1
+[15000] Event expression: clock or done detected
+$finish called at time : 15 ns

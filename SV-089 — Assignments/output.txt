@@ -1,0 +1,5 @@
+# run 1000ns
+[0] Blocking    : x=1 y=1
+[0] Before NBA  : x=x y=x
+[1000] After NBA   : x=1 y=x
+$finish called at time : 1 ns 

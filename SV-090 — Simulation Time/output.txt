@@ -1,0 +1,8 @@
+# run 1000ns
+[0] Simulation started
+[10000] After #10 delay
+Start time   = 0
+End time     = 10000
+Elapsed time = 10000
+[15000] After additional #5 delay
+$finish called at time : 15 ns 

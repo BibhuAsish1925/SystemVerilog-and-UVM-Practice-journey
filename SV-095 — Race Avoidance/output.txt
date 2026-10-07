@@ -1,0 +1,7 @@
+# run 1000ns
+[5000] Monitor : d=0 q=0
+[15000] Driver  : d=1
+[15000] Monitor : d=0 q=0
+[25000] Driver  : d=0
+[25000] Monitor : d=1 q=0
+$finish called at time : 35 ns

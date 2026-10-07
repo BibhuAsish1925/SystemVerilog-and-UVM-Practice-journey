@@ -1,0 +1,6 @@
+# run 1000ns
+[0] Active    : a=0 b=0
+[0] Active    : a=1 b=0
+[0] Inactive  : a=1 b=0
+[0] Postponed : a=1 b=1
+$finish called at time : 1 ns 
