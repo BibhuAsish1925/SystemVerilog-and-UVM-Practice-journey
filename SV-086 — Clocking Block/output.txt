@@ -1,0 +1,4 @@
+# run 1000ns
+[25000] Clocking block | data=a5 | ready=0
+[35000] Clocking block | data=a5 | ready=1
+$finish called at time : 45 ns

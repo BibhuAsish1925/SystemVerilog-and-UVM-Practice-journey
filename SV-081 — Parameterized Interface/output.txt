@@ -1,0 +1,8 @@
+# run 1000ns
+[5000] 8-bit  | data=00 | valid=0 | ready=x
+[5000] 16-bit | data=0000 | valid=0 | ready=x
+[15000] 8-bit  | data=a5 | valid=1 | ready=0
+[15000] 16-bit | data=1234 | valid=1 | ready=0
+[25000] 8-bit  | data=a5 | valid=0 | ready=1
+[25000] 16-bit | data=1234 | valid=0 | ready=1
+$finish called at time : 30 ns

@@ -1,0 +1,3 @@
+# run 1000ns
+[25000] Driver: data = a5
+$finish called at time : 35 ns

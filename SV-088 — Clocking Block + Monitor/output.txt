@@ -1,0 +1,6 @@
+# run 1000ns
+[5000] Monitor: data=00 | valid=0 | ready=x
+[15000] Monitor: data=a5 | valid=1 | ready=0
+[25000] Monitor: data=3c | valid=1 | ready=1
+[35000] Monitor: data=3c | valid=0 | ready=1
+$finish called at time : 40 ns 

@@ -1,0 +1,4 @@
+# run 1000ns
+[5000] reset=1 valid=0 data=00 ready=x
+[15000] reset=0 valid=1 data=a5 ready=0
+[25000] reset=0 valid=0 data=a5 ready=1
