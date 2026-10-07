@@ -1,0 +1,4 @@
+# run 1000ns
+ERROR: For covergroup Instance 'cg' of covergroup 'sv_104_illegal_bins_tb::opcode_cg', Illegal bin value = '3' in bin 'illegal_opcode' of coverpoint 'opcode' was hit while sampling. The bin counter for the illegal bin 'illegal_opcode' is "1". 
+[0] Coverage = 100.00%
+$finish called at time : 0 fs

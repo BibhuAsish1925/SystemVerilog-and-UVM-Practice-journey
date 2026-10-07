@@ -1,0 +1,9 @@
+# run 1000ns
+================================
+      FUNCTIONAL COVERAGE
+================================
+Covergroup : opcode_cg
+Coverage   : 100.00%
+Instance   : 100.00%
+================================
+$finish called at time : 0 fs 
