@@ -1,0 +1,6 @@
+# run 1000ns
+
+Time: 45 ns Started: 45 ns Scope: /sv_124_bind_tb/dut/checker_inst File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_124_bind_dut.sv Line:38
+Error: [45000] BIND assertion failed: valid=1 but ready=0
+Time: 45 ns  Iteration: 1  Process: /sv_124_bind_tb/dut/checker_inst//sv_124_bind_tb/dut/checker_inst  Scope: sv_124_bind_tb.dut.checker_inst  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_124_bind_dut.sv Line: 41
+$finish called at time : 55 ns 

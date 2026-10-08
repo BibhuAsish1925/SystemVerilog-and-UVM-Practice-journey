@@ -1,0 +1,18 @@
+# run 1000ns
+
+Time: 95 ns Started: 95 ns Scope: /sv_125_protocol_assertions_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_125_protocol_assertions_tb.sv Line:25
+Error: [95000] VALID/READY failed: ready=0 while valid=1
+Time: 95 ns  Iteration: 1  Process: /sv_125_protocol_assertions_tb//sv_125_protocol_assertions_tb  Scope: sv_125_protocol_assertions_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_125_protocol_assertions_tb.sv Line: 28
+
+Time: 115 ns Started: 105 ns Scope: /sv_125_protocol_assertions_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_125_protocol_assertions_tb.sv Line:37
+Error: [115000] HANDSHAKE failed: ack missing after request
+Time: 115 ns  Iteration: 1  Process: /sv_125_protocol_assertions_tb//sv_125_protocol_assertions_tb  Scope: sv_125_protocol_assertions_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_125_protocol_assertions_tb.sv Line: 40
+
+Time: 115 ns Started: 115 ns Scope: /sv_125_protocol_assertions_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_125_protocol_assertions_tb.sv Line:49
+Error: [115000] FIFO failed: write attempted while full
+Time: 115 ns  Iteration: 1  Process: /sv_125_protocol_assertions_tb//sv_125_protocol_assertions_tb  Scope: sv_125_protocol_assertions_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_125_protocol_assertions_tb.sv Line: 52
+
+Time: 125 ns Started: 125 ns Scope: /sv_125_protocol_assertions_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_125_protocol_assertions_tb.sv Line:57
+Error: [125000] FIFO failed: read attempted while empty
+Time: 125 ns  Iteration: 1  Process: /sv_125_protocol_assertions_tb//sv_125_protocol_assertions_tb  Scope: sv_125_protocol_assertions_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_125_protocol_assertions_tb.sv Line: 60
+$finish called at time : 135 ns 

@@ -1,0 +1,10 @@
+# run 1000ns
+
+Time: 45 ns Started: 45 ns Scope: /sv_123_assertion_intent_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_123_assertion_intent_tb.sv Line:15
+Error: [45000] ASSERT failed: valid=1 but ready=0
+Time: 45 ns  Iteration: 1  Process: /sv_123_assertion_intent_tb//sv_123_assertion_intent_tb  Scope: sv_123_assertion_intent_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_123_assertion_intent_tb.sv Line: 18
+
+Time: 75 ns Started: 75 ns Scope: /sv_123_assertion_intent_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_123_assertion_intent_tb.sv Line:15
+Error: [75000] ASSERT failed: valid=1 but ready=0
+Time: 75 ns  Iteration: 1  Process: /sv_123_assertion_intent_tb//sv_123_assertion_intent_tb  Scope: sv_123_assertion_intent_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_123_assertion_intent_tb.sv Line: 18
+$finish called at time : 85 ns 

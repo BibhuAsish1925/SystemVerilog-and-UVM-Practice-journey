@@ -1,0 +1,6 @@
+# run 1000ns
+
+Time: 55 ns Started: 55 ns Scope: /sv_122_disable_iff_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_122_disable_iff_tb.sv Line:20
+Error: [55000] Assertion failed: valid requires ready
+Time: 55 ns  Iteration: 1  Process: /sv_122_disable_iff_tb//sv_122_disable_iff_tb  Scope: sv_122_disable_iff_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_122_disable_iff_tb.sv Line: 24
+$finish called at time : 85 ns 
