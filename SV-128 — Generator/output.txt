@@ -1,0 +1,9 @@
+# run 1000ns
+Starting transaction generation...
+[0] Transaction: address=13 data=26 write=1
+[0] Transaction: address=15 data=e8 write=0
+[0] Transaction: address=1e data=a1 write=1
+[0] Transaction: address=19 data=a9 write=0
+[0] Transaction: address=1b data=bf write=0
+Transaction generation completed.
+$finish called at time : 0 fs

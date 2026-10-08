@@ -1,0 +1,13 @@
+# run 1000ns
+[0] Generated: address=1c data=96 write=1
+[0] Generated: address=1f data=d1 write=0
+[0] Generated: address=18 data=d5 write=0
+[0] Generated: address=14 data=a7 write=0
+[0] Generated: address=1a data=b9 write=1
+[0] Received: address=1c data=96 write=1
+[0] Received: address=1f data=d1 write=0
+[0] Received: address=18 data=d5 write=0
+[0] Received: address=14 data=a7 write=0
+[0] Received: address=1a data=b9 write=1
+Generator and mailbox communication completed.
+$finish called at time : 0 fs 

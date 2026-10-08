@@ -1,0 +1,4 @@
+# run 1000ns
+[0] Transaction: address=10 data=a5 write=1
+[0] Transaction: address=20 data=3c write=0
+$finish called at time : 0 fs 

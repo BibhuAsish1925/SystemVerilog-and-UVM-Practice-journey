@@ -1,0 +1,7 @@
+# run 1000ns
+[0] address=16 data=6d write=0
+[0] address=17 data=29 write=1
+[0] address=19 data=a1 write=1
+[0] address=1b data=dc write=1
+[0] address=14 data=8c write=1
+$finish called at time : 0 fs

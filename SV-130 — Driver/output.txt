@@ -1,0 +1,8 @@
+# run 1000ns
+[0] Driver: address=1c data=96 write=1
+[10000] Driver: address=1f data=d1 write=0
+[20000] Driver: address=18 data=d5 write=0
+[30000] Driver: address=14 data=a7 write=0
+[40000] Driver: address=1a data=b9 write=1
+Generator-to-driver communication completed.
+$finish called at time : 50 ns 
