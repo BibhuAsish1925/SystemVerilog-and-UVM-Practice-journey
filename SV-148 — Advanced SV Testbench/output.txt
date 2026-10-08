@@ -1,0 +1,45 @@
+# run 1000ns
+========================================
+Starting SV-148 Advanced SV Testbench
+========================================
+[0] Generated: address=1b data=58 write=1
+[0] Generated: address=1e data=df write=0
+[0] Generated: address=19 data=cd write=1
+[0] Generated: address=19 data=29 write=0
+[0] Generated: address=13 data=94 write=1
+[0] Generated: address=19 data=5f write=0
+[0] Generated: address=13 data=41 write=1
+[0] Generated: address=17 data=52 write=0
+[10000] Driver: address=1b data=58 write=1
+[15000] Monitor: address=1b data=58 result=73
+[15000] SCOREBOARD: PASS expected=73 actual=73
+[20000] Driver: address=1e data=df write=0
+[25000] Monitor: address=1e data=df result=fd
+[25000] SCOREBOARD: PASS expected=fd actual=fd
+[30000] Driver: address=19 data=cd write=1
+[35000] Monitor: address=19 data=cd result=e6
+[35000] SCOREBOARD: PASS expected=e6 actual=e6
+[40000] Driver: address=19 data=29 write=0
+[45000] Monitor: address=19 data=29 result=42
+[45000] SCOREBOARD: PASS expected=42 actual=42
+[50000] Driver: address=13 data=94 write=1
+[55000] Monitor: address=13 data=94 result=a7
+[55000] SCOREBOARD: PASS expected=a7 actual=a7
+[60000] Driver: address=19 data=5f write=0
+[65000] Monitor: address=19 data=5f result=78
+[65000] SCOREBOARD: PASS expected=78 actual=78
+[70000] Driver: address=13 data=41 write=1
+[75000] Monitor: address=13 data=41 result=54
+[75000] SCOREBOARD: PASS expected=54 actual=54
+[80000] Driver: address=17 data=52 write=0
+[85000] Monitor: address=17 data=52 result=69
+[85000] SCOREBOARD: PASS expected=69 actual=69
+========================================
+SV-148 Verification Summary
+========================================
+Transactions = 8
+PASS         = 8
+FAIL         = 0
+Coverage     = 100.00%
+========================================
+$finish called at time : 90 ns 

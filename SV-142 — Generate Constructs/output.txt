@@ -1,0 +1,6 @@
+# run 1000ns
+Generate-for AND result = 1000
+Generate-if  XOR result = 0110
+Generate-for AND result = 0011
+Generate-if  XOR result = 1100
+$finish called at time : 2 ns 

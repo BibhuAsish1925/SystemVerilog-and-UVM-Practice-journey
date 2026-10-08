@@ -1,0 +1,10 @@
+# run 1000ns
+
+Time: 35 ns Started: 35 ns Scope: /sv_147_coverage_assertions_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new/sv_147_coverage_assertions_tb.sv Line:33
+Error: [35000] ASSERTION FAILED: valid=1 but ready=0
+Time: 35 ns  Iteration: 0  Process: /sv_147_coverage_assertions_tb//sv_147_coverage_assertions_tb  Scope: sv_147_coverage_assertions_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new/sv_147_coverage_assertions_tb.sv Line: 36
+========================================
+Coverage + Assertion Verification
+========================================
+Functional Coverage = 100.00%
+$finish called at time : 50 ns 

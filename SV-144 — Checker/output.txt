@@ -1,0 +1,7 @@
+# run 1000ns
+[35000] DUT: transfer accepted, data=a5
+
+Time: 55 ns Started: 55 ns Scope: /sv_144_checker_tb/protocol_checker File: D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new/sv_144_checker_tb.sv Line:31
+Error: [55000] CHECKER ASSERTION FAILED: valid=1 but ready=0
+Time: 55 ns  Iteration: 1  Process: /sv_144_checker_tb/protocol_checker//sv_144_checker_tb/protocol_checker  Scope: sv_144_checker_tb.protocol_checker  File: D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new/sv_144_checker_tb.sv Line: 37
+$finish called at time : 65 ns

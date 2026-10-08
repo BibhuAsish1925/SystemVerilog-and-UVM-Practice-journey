@@ -1,0 +1,369 @@
+`timescale 1ns/1ps
+
+interface sv148_dut_if;
+
+    logic       clk;
+    logic       valid;
+    logic       ready;
+    logic       write;
+    logic [7:0] address;
+    logic [7:0] data;
+    logic [7:0] result;
+
+endinterface
+
+
+module sv_148_dut (
+    sv148_dut_if vif
+);
+
+    // DUT behavior
+    assign vif.result = vif.address + vif.data;
+
+endmodule
+
+
+class sv148_transaction;
+
+    rand logic [7:0] address;
+    rand logic [7:0] data;
+    rand logic       write;
+
+    constraint address_range {
+        address inside {[8'h10:8'h1F]};
+    }
+
+    constraint data_range {
+        data inside {[8'h20:8'hEF]};
+    }
+
+    function void display(string name = "Transaction");
+
+        $display("[%0t] %s: address=%h data=%h write=%b",
+                 $time, name, address, data, write);
+
+    endfunction
+
+endclass
+
+
+class sv148_generator;
+
+    mailbox #(sv148_transaction) gen_mbx;
+    mailbox #(sv148_transaction) expected_mbx;
+
+    function new(
+        mailbox #(sv148_transaction) gen_mbx,
+        mailbox #(sv148_transaction) expected_mbx
+    );
+
+        this.gen_mbx      = gen_mbx;
+        this.expected_mbx = expected_mbx;
+
+    endfunction
+
+
+    task run(input int count);
+
+        sv148_transaction tx;
+
+        repeat (count) begin
+
+            tx = new();
+
+            if (!tx.randomize())
+                $fatal(1, "SV-148 transaction randomization failed");
+
+            gen_mbx.put(tx);
+            expected_mbx.put(tx);
+
+            tx.display("Generated");
+
+        end
+
+    endtask
+
+endclass
+
+
+class sv148_driver;
+
+    mailbox #(sv148_transaction) gen_mbx;
+    virtual sv148_dut_if vif;
+
+    function new(
+        mailbox #(sv148_transaction) gen_mbx,
+        virtual sv148_dut_if vif
+    );
+
+        this.gen_mbx = gen_mbx;
+        this.vif     = vif;
+
+    endfunction
+
+
+    task run(input int count);
+
+        sv148_transaction tx;
+
+        repeat (count) begin
+
+            gen_mbx.get(tx);
+
+            @(negedge vif.clk);
+
+            vif.address = tx.address;
+            vif.data    = tx.data;
+            vif.write   = tx.write;
+            vif.valid   = 1'b1;
+
+            $display("[%0t] Driver: address=%h data=%h write=%b",
+                     $time,
+                     tx.address,
+                     tx.data,
+                     tx.write);
+
+            @(posedge vif.clk);
+
+        end
+
+        @(negedge vif.clk);
+        vif.valid = 1'b0;
+
+    endtask
+
+endclass
+
+
+class sv148_monitor;
+
+    virtual sv148_dut_if vif;
+    mailbox #(sv148_transaction) actual_mbx;
+
+    function new(
+        virtual sv148_dut_if vif,
+        mailbox #(sv148_transaction) actual_mbx
+    );
+
+        this.vif        = vif;
+        this.actual_mbx = actual_mbx;
+
+    endfunction
+
+
+    task run(input int count);
+
+        sv148_transaction tx;
+        int captured = 0;
+
+        while (captured < count) begin
+
+            @(posedge vif.clk);
+
+            if (vif.valid && vif.ready) begin
+
+                tx = new();
+
+                tx.address = vif.address;
+                tx.data    = vif.data;
+                tx.write   = vif.write;
+
+                actual_mbx.put(tx);
+
+                captured++;
+
+                $display("[%0t] Monitor: address=%h data=%h result=%h",
+                         $time,
+                         vif.address,
+                         vif.data,
+                         vif.result);
+
+            end
+
+        end
+
+    endtask
+
+endclass
+
+
+class sv148_scoreboard;
+
+    mailbox #(sv148_transaction) expected_mbx;
+    mailbox #(sv148_transaction) actual_mbx;
+
+    int pass_count;
+    int fail_count;
+
+    function new(
+        mailbox #(sv148_transaction) expected_mbx,
+        mailbox #(sv148_transaction) actual_mbx
+    );
+
+        this.expected_mbx = expected_mbx;
+        this.actual_mbx   = actual_mbx;
+
+        pass_count = 0;
+        fail_count = 0;
+
+    endfunction
+
+
+    task run(input int count);
+
+        sv148_transaction expected;
+        sv148_transaction actual;
+
+        logic [7:0] expected_result;
+        logic [7:0] actual_result;
+
+        repeat (count) begin
+
+            expected_mbx.get(expected);
+            actual_mbx.get(actual);
+
+            expected_result = expected.address + expected.data;
+            actual_result   = actual.address + actual.data;
+
+            if ((expected.address == actual.address) &&
+                (expected.data    == actual.data)    &&
+                (expected.write   == actual.write)   &&
+                (actual_result    == expected_result)) begin
+
+                pass_count++;
+
+                $display("[%0t] SCOREBOARD: PASS expected=%h actual=%h",
+                         $time,
+                         expected_result,
+                         actual_result);
+
+            end
+            else begin
+
+                fail_count++;
+
+                $error("[%0t] SCOREBOARD: FAIL expected=%h actual=%h",
+                       $time,
+                       expected_result,
+                       actual_result);
+
+            end
+
+        end
+
+    endtask
+
+endclass
+
+
+module sv_148_advanced_sv_testbench_tb;
+
+    sv148_dut_if vif();
+
+    mailbox #(sv148_transaction) gen_mbx;
+    mailbox #(sv148_transaction) expected_mbx;
+    mailbox #(sv148_transaction) actual_mbx;
+
+    sv148_generator  gen;
+    sv148_driver     drv;
+    sv148_monitor    mon;
+    sv148_scoreboard sb;
+
+    int transaction_count = 8;
+
+
+    covergroup sv148_coverage @(posedge vif.clk);
+
+        cp_write:
+            coverpoint vif.write iff (vif.valid && vif.ready) {
+                bins read  = {0};
+                bins write = {1};
+            }
+
+        cp_address:
+            coverpoint vif.address iff (vif.valid && vif.ready) {
+                bins address_low  = {[8'h10:8'h17]};
+                bins address_high = {[8'h18:8'h1F]};
+            }
+
+        cp_data:
+            coverpoint vif.data iff (vif.valid && vif.ready) {
+                bins data_low  = {[8'h20:8'h87]};
+                bins data_high = {[8'h88:8'hEF]};
+            }
+
+        cross_write_address:
+            cross cp_write, cp_address;
+
+    endgroup
+
+    sv148_coverage coverage;
+
+
+    // SVA: every valid transfer requires ready
+    ap_valid_requires_ready:
+        assert property (@(posedge vif.clk)
+                          vif.valid |-> vif.ready)
+        else
+            $error("[%0t] SVA FAILED: valid=1 but ready=0",
+                   $time);
+
+
+    sv_148_dut dut (
+        .vif(vif)
+    );
+
+
+    initial begin
+
+        vif.clk     = 1'b0;
+        vif.valid   = 1'b0;
+        vif.ready   = 1'b1;
+        vif.write   = 1'b0;
+        vif.address = 8'h00;
+        vif.data    = 8'h00;
+
+        gen_mbx      = new();
+        expected_mbx = new();
+        actual_mbx   = new();
+
+        gen = new(gen_mbx, expected_mbx);
+        drv = new(gen_mbx, vif);
+        mon = new(vif, actual_mbx);
+        sb  = new(expected_mbx, actual_mbx);
+
+        coverage = new();
+
+        $display("========================================");
+        $display("Starting SV-148 Advanced SV Testbench");
+        $display("========================================");
+
+        fork
+
+            gen.run(transaction_count);
+            drv.run(transaction_count);
+            mon.run(transaction_count);
+            sb.run(transaction_count);
+
+        join
+
+        $display("========================================");
+        $display("SV-148 Verification Summary");
+        $display("========================================");
+
+        $display("Transactions = %0d", transaction_count);
+        $display("PASS         = %0d", sb.pass_count);
+        $display("FAIL         = %0d", sb.fail_count);
+        $display("Coverage     = %0.2f%%",
+                 coverage.get_coverage());
+
+        $display("========================================");
+
+        $finish;
+
+    end
+
+
+    always #5 vif.clk = ~vif.clk;
+
+endmodule

@@ -1,0 +1,4 @@
+# run 1000ns
+[26000] Program: data=10 result=11
+[46000] Program: data=20 result=21
+$finish called at time : 46 ns
