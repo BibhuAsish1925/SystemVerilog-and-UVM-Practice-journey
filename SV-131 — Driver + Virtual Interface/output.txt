@@ -1,8 +1,0 @@
-# run 1000ns
-[0] Driver -> DUT: address=1c data=96 write=1 valid=1
-[10000] Driver -> DUT: address=1f data=d1 write=0 valid=1
-[20000] Driver -> DUT: address=18 data=d5 write=0 valid=1
-[30000] Driver -> DUT: address=14 data=a7 write=0 valid=1
-[40000] Driver -> DUT: address=1a data=b9 write=1 valid=1
-Virtual interface connectivity completed.
-$finish called at time : 50 ns
