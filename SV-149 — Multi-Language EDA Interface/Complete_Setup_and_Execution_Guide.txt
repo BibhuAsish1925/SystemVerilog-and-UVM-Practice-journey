@@ -1,0 +1,713 @@
+SV-149 — Multi-Language EDA Interface
+Complete Setup and Execution Guide
+============================================================
+
+1. OVERVIEW
+============================================================
+
+SV-149 demonstrates how SystemVerilog, C, Python, Perl, and Tcl
+can be used together in an EDA-oriented workflow.
+
+The project uses:
+
+    Tcl
+     |
+     +----> Python
+     |
+     +----> Perl
+     |
+     +----> Vivado/XSim
+                |
+                +----> SystemVerilog
+                           |
+                           +----> DPI-C
+                                     |
+                                     +----> C
+
+The same simple calculation is used throughout the demonstration:
+
+    25 + 17 = 42
+
+The purpose of this project is not to create a complex verification
+environment, but to understand how different languages can interact
+in a practical EDA workflow.
+
+
+2. REQUIRED SOFTWARE
+============================================================
+
+The project was successfully tested using:
+
+    Vivado 2025.1
+    Python 3.14.0
+    Perl 5.8.8
+
+The Vivado Tcl Shell is used to execute the complete project.
+
+Important:
+
+    The commands in this guide should be executed from the
+    Vivado Tcl Shell / Vivado Tcl Console.
+
+Do not use a normal Windows Command Prompt for the Vivado-specific
+commands such as:
+
+    xsc
+    xvlog
+    xelab
+    xsim
+
+
+3. PROJECT FILES
+============================================================
+
+The project contains the following files:
+
+    sv_149_multilang_tb.sv
+    sv_149_multilang.c
+    sv_149_multilang.py
+    sv_149_multilang.pl
+    sv_149_multilang.tcl
+    Complete_Setup_and_Execution_Guide.txt
+
+File purpose:
+
+    sv_149_multilang_tb.sv
+        SystemVerilog testbench.
+        Calls the C function through DPI-C.
+
+    sv_149_multilang.c
+        C implementation of the DPI-C function.
+        Performs 25 + 17.
+
+    sv_149_multilang.py
+        Python demonstration.
+        Performs the same calculation independently.
+
+    sv_149_multilang.pl
+        Perl demonstration.
+        Performs the same calculation independently.
+
+    sv_149_multilang.tcl
+        Master Tcl script.
+        Runs Python, Perl, C compilation, SystemVerilog compilation,
+        elaboration, and simulation.
+
+    Complete_Setup_and_Execution_Guide.txt
+        Complete setup and execution reference for this project.
+
+
+4. PROJECT LOCATION
+============================================================
+
+The project was tested from:
+
+D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new
+
+The exact path may be different on another system.
+
+The important requirement is that all five source/script files are
+available in the same working directory when the Tcl script is
+executed.
+
+
+5. VERIFY THE PROJECT FILES
+============================================================
+
+Open the Vivado Tcl Shell and move to the project directory.
+
+Example:
+
+    cd {D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new}
+
+Check the current directory:
+
+    pwd
+
+Check the SV-149 files:
+
+    glob sv_149_*
+
+Expected files:
+
+    sv_149_multilang.c
+    sv_149_multilang.pl
+    sv_149_multilang.py
+    sv_149_multilang.tcl
+    sv_149_multilang_tb.sv
+
+
+6. VERIFY PYTHON
+============================================================
+
+Run:
+
+    exec python --version
+
+The tested environment reported:
+
+    Python 3.14.0
+
+Then test Python directly if required:
+
+    exec python sv_149_multilang.py
+
+Expected output:
+
+    [PYTHON] Python calculation: 25 + 17 = 42
+    [PYTHON] Python test: PASS
+
+
+7. VERIFY PERL
+============================================================
+
+Run:
+
+    exec perl -v
+
+The tested environment reported:
+
+    This is perl, v5.8.8 built for msys-64int
+
+Then test Perl directly if required:
+
+    exec perl sv_149_multilang.pl
+
+Expected output:
+
+    [PERL] Perl calculation: 25 + 17 = 42
+    [PERL] Perl test: PASS
+
+
+8. SYSTEMVERILOG DPI-C STRUCTURE
+============================================================
+
+The SystemVerilog testbench imports the C function using DPI-C.
+
+The important declaration is:
+
+    import "DPI-C" function int sv149_c_add(
+        input int a,
+        input int b
+    );
+
+The SystemVerilog testbench calls:
+
+    c_result = sv149_c_add(a, b);
+
+with:
+
+    a = 25
+    b = 17
+
+The expected result is:
+
+    42
+
+
+9. C DPI-C IMPLEMENTATION
+============================================================
+
+The C file contains the implementation:
+
+    #include "svdpi.h"
+    #include <stdio.h>
+
+    DPI_DLLESPEC
+    int sv149_c_add(int a, int b)
+    {
+        int result = a + b;
+
+        printf("[C] C function: %d + %d = %d\n", a, b, result);
+
+        return result;
+    }
+
+The function name and argument/return types must match the
+SystemVerilog DPI-C declaration.
+
+
+10. IMPORTANT DPI-C VIVADO RULE
+============================================================
+
+The C file should NOT be added through the normal Vivado
+Add Sources flow as an HDL source.
+
+For this project, the C DPI implementation is compiled using:
+
+    xsc
+
+The generated DPI library is then linked during elaboration using:
+
+    xelab -sv_lib dpi
+
+
+11. COMPILE THE C DPI CODE
+============================================================
+
+Run:
+
+    exec xsc sv_149_multilang.c 2>@1
+
+The:
+
+    2>@1
+
+part redirects stderr to stdout.
+
+This is important because GCC may print warnings while xsc
+successfully completes compilation.
+
+The tested compilation produced:
+
+    Done compilation
+    Done linking: "xsim.dir/work\xsc\dpi.a"
+
+The generated library is:
+
+    xsim.dir/work\xsc\dpi.a
+
+A warning such as:
+
+    warning: 'dllimport' attribute ignored
+
+does not necessarily mean that compilation failed.
+
+For this project, xsc successfully compiled and linked the DPI
+library, and the C function subsequently executed correctly.
+
+
+12. COMPILE SYSTEMVERILOG
+============================================================
+
+Compile the SystemVerilog testbench:
+
+    exec xvlog -sv sv_149_multilang_tb.sv
+
+The expected result is successful analysis of:
+
+    sv_149_multilang_tb
+
+
+13. ELABORATE AND LINK DPI
+============================================================
+
+Run:
+
+    exec xelab sv_149_multilang_tb -sv_lib dpi
+
+This step elaborates the SystemVerilog design and links the DPI
+library generated by xsc.
+
+The important option is:
+
+    -sv_lib dpi
+
+This tells xelab to use the DPI library named:
+
+    dpi
+
+
+14. RUN THE SIMULATION
+============================================================
+
+Run:
+
+    exec xsim sv_149_multilang_tb -runall
+
+The simulation executes the SystemVerilog testbench.
+
+The SystemVerilog testbench calls the C function through DPI-C.
+
+Expected important output:
+
+    [C] C function: 25 + 17 = 42
+
+    [SV] SystemVerilog: a = 25
+    [SV] SystemVerilog: b = 17
+    [SV] C result through DPI-C = 42
+    [SV] DPI-C communication: PASS
+
+
+15. COMPLETE MANUAL EXECUTION SEQUENCE
+============================================================
+
+If each step is executed manually from the Vivado Tcl Shell:
+
+    cd {D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new}
+
+    exec python sv_149_multilang.py
+
+    exec perl sv_149_multilang.pl
+
+    exec xsc sv_149_multilang.c 2>@1
+
+    exec xvlog -sv sv_149_multilang_tb.sv
+
+    exec xelab sv_149_multilang_tb -sv_lib dpi
+
+    exec xsim sv_149_multilang_tb -runall
+
+
+16. AUTOMATED TCL EXECUTION
+============================================================
+
+The project provides:
+
+    sv_149_multilang.tcl
+
+This script automates the complete sequence.
+
+The script performs:
+
+    1. Tcl startup message
+    2. Python execution
+    3. Perl execution
+    4. C DPI compilation
+    5. SystemVerilog compilation
+    6. DPI elaboration/linking
+    7. SystemVerilog simulation
+    8. Completion message
+
+
+17. FINAL TCL SCRIPT
+============================================================
+
+The final working Tcl script is:
+
+    puts "========================================"
+    puts "SV-149 MULTI-LANGUAGE EDA DEMONSTRATION"
+    puts "========================================"
+
+    puts "\n\[TCL\] Tcl execution started"
+
+    puts "\n\[TCL\] Running Python..."
+    puts [exec python sv_149_multilang.py]
+
+    puts "\n\[TCL\] Running Perl..."
+    puts [exec perl sv_149_multilang.pl]
+
+    puts "\n\[TCL\] Compiling C DPI code..."
+    exec xsc sv_149_multilang.c 2>@1
+
+    puts "\n\[TCL\] Compiling SystemVerilog..."
+    exec xvlog -sv sv_149_multilang_tb.sv
+
+    puts "\n\[TCL\] Elaborating and linking DPI library..."
+    exec xelab sv_149_multilang_tb -sv_lib dpi
+
+    puts "\n\[TCL\] Running SystemVerilog simulation..."
+    puts [exec xsim sv_149_multilang_tb -runall]
+
+    puts "\n========================================"
+    puts "ALL LANGUAGE TESTS COMPLETED"
+    puts "========================================"
+
+
+18. IMPORTANT TCL SYNTAX NOTE
+============================================================
+
+Tcl uses square brackets for command substitution.
+
+For example:
+
+    [exec python sv_149_multilang.py]
+
+means that Tcl should execute the command inside the brackets.
+
+Therefore, literal text such as:
+
+    [TCL]
+
+must not be written directly as:
+
+    puts "\n[TCL] Tcl execution started"
+
+because Tcl interprets:
+
+    [TCL]
+
+as a Tcl command.
+
+The correct form is:
+
+    puts "\n\[TCL\] Tcl execution started"
+
+The backslashes prevent Tcl from interpreting the square brackets
+as command substitution.
+
+
+19. COMPLETE AUTOMATED EXECUTION
+============================================================
+
+From the correct project directory, execute:
+
+    source sv_149_multilang.tcl
+
+The Tcl script will automatically execute all stages.
+
+
+20. EXPECTED COMPLETE OUTPUT
+============================================================
+
+The successful execution should contain output similar to:
+
+    ========================================
+    SV-149 MULTI-LANGUAGE EDA DEMONSTRATION
+    ========================================
+
+    [TCL] Tcl execution started
+
+    [TCL] Running Python...
+
+    [PYTHON] Python calculation: 25 + 17 = 42
+    [PYTHON] Python test: PASS
+
+    [TCL] Running Perl...
+
+    [PERL] Perl calculation: 25 + 17 = 42
+    [PERL] Perl test: PASS
+
+    [TCL] Compiling C DPI code...
+
+    [TCL] Compiling SystemVerilog...
+
+    [TCL] Elaborating and linking DPI library...
+
+    [TCL] Running SystemVerilog simulation...
+
+    [C] C function: 25 + 17 = 42
+
+    [SV] SystemVerilog: a = 25
+    [SV] SystemVerilog: b = 17
+    [SV] C result through DPI-C = 42
+    [SV] DPI-C communication: PASS
+
+    ========================================
+    ALL LANGUAGE TESTS COMPLETED
+    ========================================
+
+
+21. VERIFIED RESULTS
+============================================================
+
+SV-149 was successfully tested using Vivado 2025.1.
+
+Verified:
+
+    Python calculation
+        PASS
+
+    Perl calculation
+        PASS
+
+    C compilation through xsc
+        PASS
+
+    DPI library generation
+        PASS
+
+    SystemVerilog compilation
+        PASS
+
+    DPI-C elaboration/linking
+        PASS
+
+    SystemVerilog simulation
+        PASS
+
+    C-to-SystemVerilog communication
+        PASS
+
+    Overall multi-language flow
+        PASS
+
+
+22. TROUBLESHOOTING
+============================================================
+
+Problem 1:
+    invalid command name "TCL"
+
+Cause:
+    Literal [TCL] was interpreted by Tcl as command substitution.
+
+Incorrect:
+
+    puts "\n[TCL] Tcl execution started"
+
+Correct:
+
+    puts "\n\[TCL\] Tcl execution started"
+
+
+Problem 2:
+    xsc appears to compile but Tcl stops with a warning.
+
+Cause:
+    GCC warning output is being returned through stderr.
+
+Recommended command:
+
+    exec xsc sv_149_multilang.c 2>@1
+
+This redirects stderr to stdout so Tcl can continue when xsc
+successfully completes.
+
+
+Problem 3:
+    DPI-C undefined reference during elaboration/linking.
+
+Example:
+
+    undefined reference to `sv149_c_add'
+
+Possible cause:
+    The C DPI implementation was not compiled or linked.
+
+Run:
+
+    exec xsc sv_149_multilang.c 2>@1
+
+Then:
+
+    exec xelab sv_149_multilang_tb -sv_lib dpi
+
+
+Problem 4:
+    Python command is not recognized.
+
+Check:
+
+    exec python --version
+
+Python must be available from the Vivado Tcl environment.
+
+
+Problem 5:
+    Perl command is not recognized.
+
+Check:
+
+    exec perl -v
+
+Perl must be available from the Vivado Tcl environment.
+
+
+Problem 6:
+    Source file cannot be found.
+
+Check:
+
+    pwd
+
+Then:
+
+    glob sv_149_*
+
+Make sure all five SV-149 project files are in the current
+directory.
+
+
+23. IMPORTANT EXECUTION ORDER
+============================================================
+
+The order used by the Tcl script is:
+
+    Tcl
+      |
+      +--> Python
+      |
+      +--> Perl
+      |
+      +--> xsc -> C DPI library
+      |
+      +--> xvlog -> SystemVerilog compilation
+      |
+      +--> xelab -> elaboration + DPI linking
+      |
+      +--> xsim -> simulation
+                  |
+                  +--> SystemVerilog calls C
+
+
+24. WHAT THIS PROJECT DEMONSTRATES
+============================================================
+
+This project demonstrates several useful EDA concepts:
+
+    Tcl
+        Used as a master automation/orchestration script.
+
+    Python
+        Used as an external scripting language for calculations
+        and automation.
+
+    Perl
+        Used as another external scripting/automation language.
+
+    C
+        Used as a native function called from SystemVerilog
+        through DPI-C.
+
+    SystemVerilog
+        Acts as the simulation/testbench environment.
+
+    Vivado/XSim
+        Compiles, elaborates, links, and runs the simulation.
+
+
+25. PROJECT LIMITATION
+============================================================
+
+The Python and Perl calculations are executed independently by Tcl.
+
+They are not directly communicating with SystemVerilog.
+
+The direct language interface demonstrated in this project is:
+
+    SystemVerilog <--> C
+
+through:
+
+    DPI-C
+
+Tcl acts as the external automation layer that coordinates the
+different programs and Vivado/XSim.
+
+
+26. FINAL STATUS
+============================================================
+
+SV-149 — Multi-Language EDA Interface
+
+STATUS: COMPLETE
+
+Verified flow:
+
+    Tcl
+     |
+     +---- Python       PASS
+     |
+     +---- Perl         PASS
+     |
+     +---- Vivado
+              |
+              +---- C DPI-C       PASS
+              |
+              +---- SystemVerilog PASS
+
+Final verification:
+
+    25 + 17 = 42
+
+    Python test: PASS
+    Perl test: PASS
+    DPI-C communication: PASS
+
+    ALL LANGUAGE TESTS COMPLETED
+
+
+============================================================
+END OF COMPLETE SETUP AND EXECUTION GUIDE
+============================================================

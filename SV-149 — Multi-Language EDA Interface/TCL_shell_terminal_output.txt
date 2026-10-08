@@ -1,0 +1,69 @@
+Vivado% source sv_149_multilang.tcl
+# puts "========================================"
+========================================
+# puts "SV-149 MULTI-LANGUAGE EDA DEMONSTRATION"
+SV-149 MULTI-LANGUAGE EDA DEMONSTRATION
+# puts "========================================"
+========================================
+# puts "\n\[TCL\] Tcl execution started"
+
+[TCL] Tcl execution started
+# puts "\n\[TCL\] Running Python..."
+
+[TCL] Running Python...
+# puts [exec python sv_149_multilang.py]
+[PYTHON] Python calculation: 25 + 17 = 42
+[PYTHON] Python test: PASS
+# puts "\n\[TCL\] Running Perl..."
+
+[TCL] Running Perl...
+# puts [exec perl sv_149_multilang.pl]
+[PERL] Perl calculation: 25 + 17 = 42
+[PERL] Perl test: PASS
+# puts "\n\[TCL\] Compiling C DPI code..."
+
+[TCL] Compiling C DPI code...
+# exec xsc sv_149_multilang.c 2>@1
+# puts "\n\[TCL\] Compiling SystemVerilog..."
+
+[TCL] Compiling SystemVerilog...
+# exec xvlog -sv sv_149_multilang_tb.sv
+# puts "\n\[TCL\] Elaborating and linking DPI library..."
+
+[TCL] Elaborating and linking DPI library...
+# exec xelab sv_149_multilang_tb -sv_lib dpi
+# puts "\n\[TCL\] Running SystemVerilog simulation..."
+
+[TCL] Running SystemVerilog simulation...
+# puts [exec xsim sv_149_multilang_tb -runall]
+
+****** xsim v2025.1 (64-bit)
+  **** SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+  **** IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+  **** SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+  **** Start of session at: Thu Oct  8 20:22:29 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+
+source xsim.dir/work.sv_149_multilang_tb/xsim_script.tcl
+# xsim {work.sv_149_multilang_tb} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+[C] C function: 25 + 17 = 42
+
+[SV] SystemVerilog: a = 25
+[SV] SystemVerilog: b = 17
+[SV] C result through DPI-C = 42
+[SV] DPI-C communication: PASS
+$finish called at time : 0 fs : File "D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new/sv_149_multilang_tb.sv" Line 28
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Oct  8 20:22:31 2026...
+# puts "\n========================================"
+
+========================================
+# puts "ALL LANGUAGE TESTS COMPLETED"
+ALL LANGUAGE TESTS COMPLETED
+# puts "========================================"
+========================================
+Vivado%
