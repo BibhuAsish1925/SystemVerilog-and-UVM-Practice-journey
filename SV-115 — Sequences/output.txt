@@ -1,0 +1,6 @@
+# run 1000ns
+
+Time: 55 ns Started: 45 ns Scope: /sv_115_sequences_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_115_sequences_tb.sv Line:21
+Error: [55000] Sequence failed: valid was not followed by ready
+Time: 55 ns  Iteration: 1  Process: /sv_115_sequences_tb//sv_115_sequences_tb  Scope: sv_115_sequences_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_115_sequences_tb.sv Line: 24
+$finish called at time : 65 ns

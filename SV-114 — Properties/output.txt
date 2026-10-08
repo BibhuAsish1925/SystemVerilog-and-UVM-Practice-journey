@@ -1,0 +1,6 @@
+# run 1000ns
+
+Time: 25 ns Started: 25 ns Scope: /sv_114_properties_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_114_properties_tb.sv Line:16
+Error: [25000] Property failed: valid requires ready
+Time: 25 ns  Iteration: 1  Process: /sv_114_properties_tb//sv_114_properties_tb  Scope: sv_114_properties_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_114_properties_tb.sv Line: 17
+$finish called at time : 40 ns 

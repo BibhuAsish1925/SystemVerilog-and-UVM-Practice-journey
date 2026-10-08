@@ -1,0 +1,6 @@
+# run 1000ns
+
+Time: 25 ns Started: 25 ns Scope: /sv_113_concurrent_assertions_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_113_concurrent_assertions_tb.sv Line:13
+Error: [25000] Assertion failed: valid=1 but ready=0
+Time: 25 ns  Iteration: 1  Process: /sv_113_concurrent_assertions_tb//sv_113_concurrent_assertions_tb  Scope: sv_113_concurrent_assertions_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_113_concurrent_assertions_tb.sv Line: 14
+$finish called at time : 40 ns

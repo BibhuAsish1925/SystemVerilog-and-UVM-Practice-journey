@@ -1,0 +1,8 @@
+# run 1000ns
+[0] PASS: Initial checks completed
+Error: ERROR: valid is 0
+Time: 0 ps  Iteration: 0  Process: /sv_112_immediate_assert_else_tb/Initial8_0  Scope: sv_112_immediate_assert_else_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_112_immediate_assert_else_tb.sv Line: 27
+[0] Simulation continues after $error
+Fatal: FATAL: data is not A5
+Time: 0 ps  Iteration: 0  Process: /sv_112_immediate_assert_else_tb/Initial8_0  Scope: sv_112_immediate_assert_else_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_112_immediate_assert_else_tb.sv Line: 36
+$finish called at time : 0 fs

@@ -1,0 +1,54 @@
+# run 1000ns
+
+Time: 5 ns Started: 5 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:11
+Error: [5000] [*3] failed: valid was not high for 3 cycles
+Time: 5 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 12
+
+Time: 5 ns Started: 5 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:17
+Error: [5000] [+] failed: valid was never high
+Time: 5 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 18
+
+Time: 45 ns Started: 25 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:11
+Error: [45000] [*3] failed: valid was not high for 3 cycles
+Time: 45 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 12
+
+Time: 45 ns Started: 35 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:11
+Error: [45000] [*3] failed: valid was not high for 3 cycles
+Time: 45 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 12
+
+Time: 45 ns Started: 45 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:11
+Error: [45000] [*3] failed: valid was not high for 3 cycles
+Time: 45 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 12
+
+Time: 45 ns Started: 45 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:17
+Error: [45000] [+] failed: valid was never high
+Time: 45 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 18
+
+Time: 65 ns Started: 55 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:11
+Error: [65000] [*3] failed: valid was not high for 3 cycles
+Time: 65 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 12
+
+Time: 65 ns Started: 65 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:11
+Error: [65000] [*3] failed: valid was not high for 3 cycles
+Time: 65 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 12
+
+Time: 65 ns Started: 65 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:17
+Error: [65000] [+] failed: valid was never high
+Time: 65 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 18
+
+Time: 75 ns Started: 75 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:11
+Error: [75000] [*3] failed: valid was not high for 3 cycles
+Time: 75 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 12
+
+Time: 75 ns Started: 75 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:17
+Error: [75000] [+] failed: valid was never high
+Time: 75 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 18
+
+Time: 85 ns Started: 85 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:11
+Error: [85000] [*3] failed: valid was not high for 3 cycles
+Time: 85 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 12
+
+Time: 85 ns Started: 85 ns Scope: /sv_118_repetition_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line:17
+Error: [85000] [+] failed: valid was never high
+Time: 85 ns  Iteration: 1  Process: /sv_118_repetition_tb//sv_118_repetition_tb  Scope: sv_118_repetition_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_118_repetition_tb.sv Line: 18
+$finish called at time : 90 ns

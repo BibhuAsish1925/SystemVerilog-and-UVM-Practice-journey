@@ -1,0 +1,6 @@
+# run 1000ns
+[0] First assertions passed
+Error: Assertion failed: valid is 0
+Time: 0 ps  Iteration: 0  Process: /sv_111_immediate_assertions_tb/Initial8_0  Scope: sv_111_immediate_assertions_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_111_immediate_assertions_tb.sv Line: 27
+[0] Simulation continues after assertion
+$finish called at time : 0 fs

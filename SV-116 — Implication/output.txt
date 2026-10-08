@@ -1,0 +1,10 @@
+# run 1000ns
+
+Time: 65 ns Started: 65 ns Scope: /sv_116_implication_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_116_implication_tb.sv Line:14
+Error: [65000] |-> failed: valid and ready were not both high
+Time: 65 ns  Iteration: 1  Process: /sv_116_implication_tb//sv_116_implication_tb  Scope: sv_116_implication_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_116_implication_tb.sv Line: 16
+
+Time: 95 ns Started: 85 ns Scope: /sv_116_implication_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_116_implication_tb.sv Line:21
+Error: [95000] |=> failed: ready was not high next cycle
+Time: 95 ns  Iteration: 1  Process: /sv_116_implication_tb//sv_116_implication_tb  Scope: sv_116_implication_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 10/sv phase 10.srcs/sim_1/new/sv_116_implication_tb.sv Line: 23
+$finish called at time : 105 ns
