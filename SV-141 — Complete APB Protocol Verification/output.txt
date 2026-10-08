@@ -1,0 +1,21 @@
+# run 1000ns
+Starting complete protocol verification...
+[46000] Driver: WRITE address=10 data=a5
+[46000] Monitor: WRITE address=10 data=a5
+[46000] SCOREBOARD PASS: WRITE address=10 data=a5
+[76000] Driver: WRITE address=14 data=3c
+[76000] Monitor: WRITE address=14 data=3c
+[76000] SCOREBOARD PASS: WRITE address=14 data=3c
+[106000] Driver: READ  address=10 data=00
+[106000] Monitor: READ  address=10 data=a5
+[106000] SCOREBOARD PASS: READ address=10 data=a5
+[136000] Driver: READ  address=14 data=00
+[136000] Monitor: READ  address=14 data=3c
+[136000] SCOREBOARD PASS: READ address=14 data=3c
+========================================
+PROTOCOL SCOREBOARD SUMMARY
+PASS = 4
+FAIL = 0
+========================================
+Complete protocol verification completed.
+$finish called at time : 140 ns 

@@ -1,0 +1,16 @@
+# run 1000ns
+Starting complete FIFO verification...
+[30000] Driver: write=1 read=0 data=a1
+[40000] Driver: write=1 read=0 data=b2
+[50000] Driver: write=1 read=0 data=c3
+[60000] Driver: write=1 read=0 data=d4
+[70000] Driver: write=0 read=1 data=00
+[76000] Monitor: read_data=a1
+[76000] SCOREBOARD: PASS expected=a1 actual=a1
+[80000] Driver: write=0 read=1 data=00
+[86000] Monitor: read_data=b2
+[86000] SCOREBOARD: PASS expected=b2 actual=b2
+[90000] Driver: write=0 read=1 data=00
+[96000] Monitor: read_data=c3
+[96000] SCOREBOARD: PASS expected=c3 actual=c3
+[100000] Driver: write=0 read=1 data=00

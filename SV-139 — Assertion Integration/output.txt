@@ -1,0 +1,10 @@
+# run 1000ns
+
+Time: 25 ns Started: 25 ns Scope: /sv_139_assertion_integration_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 11/sv phase 11.srcs/sim_1/new/sv_139_assertion_integration_tb.sv Line:42
+Error: [25000] ASSERTION FAILED: valid=1 but ready=0
+Time: 25 ns  Iteration: 1  Process: /sv_139_assertion_integration_tb//sv_139_assertion_integration_tb  Scope: sv_139_assertion_integration_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 11/sv phase 11.srcs/sim_1/new/sv_139_assertion_integration_tb.sv Line: 45
+
+Time: 45 ns Started: 45 ns Scope: /sv_139_assertion_integration_tb File: D:/Downloads/Concept practice SV and UVM/sv phase 11/sv phase 11.srcs/sim_1/new/sv_139_assertion_integration_tb.sv Line:42
+Error: [45000] ASSERTION FAILED: valid=1 but ready=0
+Time: 45 ns  Iteration: 1  Process: /sv_139_assertion_integration_tb//sv_139_assertion_integration_tb  Scope: sv_139_assertion_integration_tb  File: D:/Downloads/Concept practice SV and UVM/sv phase 11/sv phase 11.srcs/sim_1/new/sv_139_assertion_integration_tb.sv Line: 45
+$finish called at time : 60 ns 

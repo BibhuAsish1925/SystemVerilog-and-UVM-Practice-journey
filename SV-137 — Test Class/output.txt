@@ -1,0 +1,20 @@
+# run 1000ns
+Starting SV-137 test...
+Test control: generating 5 transactions
+[1000] Driver: address=16 data=25
+[1000] Monitor: address=16 data=25 result=3b
+[1000] SCOREBOARD: PASS
+[11000] Driver: address=15 data=28
+[11000] Monitor: address=15 data=28 result=3d
+[11000] SCOREBOARD: PASS
+[21000] Driver: address=11 data=22
+[21000] Monitor: address=11 data=22 result=33
+[21000] SCOREBOARD: PASS
+[31000] Driver: address=11 data=23
+[31000] Monitor: address=11 data=23 result=34
+[31000] SCOREBOARD: PASS
+[41000] Driver: address=12 data=25
+[41000] Monitor: address=12 data=25 result=37
+[41000] SCOREBOARD: PASS
+SV-137 test completed.
+$finish called at time : 50 ns

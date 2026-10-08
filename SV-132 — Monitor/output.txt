@@ -1,0 +1,8 @@
+# run 1000ns
+[10000] Monitored: address=10 data=a5 write=1
+[30000] Monitored: address=15 data=3c write=0
+[50000] Monitored: address=1a data=72 write=1
+[70000] Monitored: address=1f data=d4 write=0
+[90000] Monitored: address=12 data=56 write=1
+Monitor completed pin-to-transaction conversion.
+$finish called at time : 100 ns 

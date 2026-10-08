@@ -1,0 +1,9 @@
+# run 1000ns
+[10000] Monitor: address=10 data=20 write=1
+[30000] Monitor: address=14 data=27 write=0
+[50000] Monitor: address=15 data=28 write=1
+[70000] Monitor: address=1f data=2f write=0
+[90000] Monitor: address=12 data=2a write=1
+Coverage = 100.00%
+Coverage integration completed.
+$finish called at time : 100 ns 

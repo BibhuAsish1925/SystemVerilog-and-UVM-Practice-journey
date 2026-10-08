@@ -1,0 +1,6 @@
+# run 1000ns
+[0] Input: address=10 data=20 Expected Result=30
+[0] Input: address=15 data=30 Expected Result=45
+[0] Input: address=1a data=40 Expected Result=5a
+Reference model prediction completed.
+$finish called at time : 0 fs

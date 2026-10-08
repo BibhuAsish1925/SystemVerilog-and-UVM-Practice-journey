@@ -1,0 +1,18 @@
+# run 1000ns
+[0] Expected: address=10 data=a5 write=1
+[0] Actual: address=10 data=a5 write=1
+[0] SCOREBOARD: PASS
+[0] Expected: address=15 data=3c write=0
+[0] Actual: address=15 data=3c write=0
+[0] SCOREBOARD: PASS
+[0] Expected: address=1a data=72 write=1
+[0] Actual: address=1a data=72 write=1
+[0] SCOREBOARD: PASS
+[0] Expected: address=1f data=d4 write=0
+[0] Actual: address=1f data=d4 write=0
+[0] SCOREBOARD: PASS
+[0] Expected: address=12 data=56 write=1
+[0] Actual: address=12 data=56 write=1
+[0] SCOREBOARD: PASS
+Scoreboard comparison completed.
+$finish called at time : 0 fs
