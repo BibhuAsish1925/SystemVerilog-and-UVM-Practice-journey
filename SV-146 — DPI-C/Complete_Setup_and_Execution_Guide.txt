@@ -1,0 +1,509 @@
+# SV-146 — DPI-C in Vivado 2025.1 — Complete Setup and Execution Guide
+
+## 1. What We Are Doing
+
+**DPI-C (Direct Programming Interface — C)** allows SystemVerilog code to call functions written in C.
+
+For SV-146, our flow was:
+
+```text
+SystemVerilog Testbench
+        │
+        │ import "DPI-C"
+        ▼
+     C Function
+        │
+        │ performs calculation
+        ▼
+      Result
+        │
+        ▼
+SystemVerilog Testbench
+```
+
+Our example used:
+
+```text
+a = 25
+b = 17
+```
+
+The C function calculated:
+
+```text
+25 + 17 = 42
+```
+
+and SystemVerilog received `42`.
+
+---
+
+# 2. Files Used
+
+Both files were stored in:
+
+```text
+D:\Downloads\Concept practice SV and UVM\sv phase 12\sv phase 12.srcs\sim_1\new
+```
+
+The two required files were:
+
+```text
+sv_146_dpi_c.c
+sv_146_dpi_c_tb.sv
+```
+
+### C file
+
+```text
+sv_146_dpi_c.c
+```
+
+This contains the actual C implementation of the DPI function.
+
+### SystemVerilog file
+
+```text
+sv_146_dpi_c_tb.sv
+```
+
+This contains the SystemVerilog testbench and the `import "DPI-C"` declaration.
+
+---
+
+# 3. Important Point — Do Not Add the `.c` File Normally in Vivado
+
+For normal Vivado simulation sources, we usually add:
+
+```text
+.v
+.sv
+.vh
+```
+
+etc.
+
+But the DPI-C `.c` file is handled differently.
+
+We **do not add `sv_146_dpi_c.c` through the normal Vivado Add Sources flow**.
+
+Instead, we compile the C file using:
+
+```text
+xsc
+```
+
+`xsc` is the Vivado/XSim compiler flow used for C/C++ DPI code.
+
+---
+
+# 4. Open the Vivado Tcl Console
+
+We used the **Vivado Tcl Console**, not a normal Windows Command Prompt.
+
+The commands were entered like:
+
+```text
+Vivado%
+```
+
+The important difference is that external Vivado tools were executed using Tcl's:
+
+```tcl
+exec
+```
+
+For example:
+
+```tcl
+exec xsc ...
+```
+
+---
+
+# 5. Move to the Source Folder
+
+First, we moved into the folder containing both files.
+
+```tcl
+cd {D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new}
+```
+
+Then we verified the current directory:
+
+```tcl
+pwd
+```
+
+The result was:
+
+```text
+D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new
+```
+
+---
+
+# 6. Verify the Files
+
+We used:
+
+```tcl
+glob *
+```
+
+The output confirmed that the required files existed:
+
+```text
+sv_142_generate_constructs_tb.sv
+sv_143_advanced_bind_tb.sv
+sv_144_checker_tb.sv
+sv_145_program_tb.sv
+sv_146_dpi_c.c
+sv_146_dpi_c_tb.sv
+sv_147_coverage_assertions_tb.sv
+sv_148_advanced_sv_testbench_tb.sv
+```
+
+The important files were:
+
+```text
+sv_146_dpi_c.c
+sv_146_dpi_c_tb.sv
+```
+
+---
+
+# 7. Step 1 — Compile the C DPI Code Using XSC
+
+We ran:
+
+```tcl
+exec xsc sv_146_dpi_c.c
+```
+
+### What `xsc` does
+
+It compiles the C source code and creates the DPI library used by XSim.
+
+Our output included:
+
+```text
+Done compilation
+```
+
+and:
+
+```text
+Done linking: "xsim.dir/work\xsc\dpi.a"
+```
+
+Therefore the C code was successfully compiled.
+
+The important generated library was:
+
+```text
+xsim.dir/work\xsc\dpi.a
+```
+
+So:
+
+```text
+sv_146_dpi_c.c
+       ↓
+      xsc
+       ↓
+    dpi.a
+```
+
+---
+
+# 8. Step 2 — Compile the SystemVerilog Testbench
+
+Next we compiled the SystemVerilog file:
+
+```tcl
+exec xvlog -sv sv_146_dpi_c_tb.sv
+```
+
+The output showed:
+
+```text
+INFO: [VRFC 10-2263] Analyzing SystemVerilog file ...
+INFO: [VRFC 10-311] analyzing module sv_146_dpi_c_tb
+```
+
+There were no errors.
+
+Therefore:
+
+```text
+sv_146_dpi_c_tb.sv
+          ↓
+        xvlog
+          ↓
+   SystemVerilog compiled
+```
+
+---
+
+# 9. Step 3 — Elaborate and Link the DPI Library
+
+This is the important connection step.
+
+We ran:
+
+```tcl
+exec xelab sv_146_dpi_c_tb -sv_lib dpi
+```
+
+### Why `-sv_lib dpi` is important
+
+The SystemVerilog code contains a DPI-C function declaration.
+
+The actual implementation is inside the C file.
+
+Therefore XSim needs to know which DPI library contains the C implementation.
+
+That is what:
+
+```text
+-sv_lib dpi
+```
+
+does.
+
+The command successfully produced:
+
+```text
+Built simulation snapshot work.sv_146_dpi_c_tb
+```
+
+There was no:
+
+```text
+undefined reference
+```
+
+error.
+
+This was particularly important because our earlier attempt had failed with an error like:
+
+```text
+undefined reference to `sv146_c_add'
+```
+
+The successful `xsc` + `xelab -sv_lib dpi` flow fixed that problem.
+
+---
+
+# 10. Step 4 — Run the Simulation
+
+Finally, we executed:
+
+```tcl
+exec xsim sv_146_dpi_c_tb -runall
+```
+
+This started XSim and ran the complete testbench.
+
+The output was:
+
+```text
+C function: received a=25 b=17
+
+SystemVerilog: a = 25
+SystemVerilog: b = 17
+C function result = 42
+DPI-C communication: PASS
+```
+
+The testbench then finished normally:
+
+```text
+$finish called at time : 0 fs
+```
+
+---
+
+# 11. Understanding the Final Output
+
+The line:
+
+```text
+C function: received a=25 b=17
+```
+
+proves that the C function successfully received the values from SystemVerilog.
+
+SystemVerilog had:
+
+```text
+a = 25
+b = 17
+```
+
+The C function performed:
+
+```text
+25 + 17 = 42
+```
+
+Then the result was returned to SystemVerilog:
+
+```text
+C function result = 42
+```
+
+Finally:
+
+```text
+DPI-C communication: PASS
+```
+
+confirms that the complete SystemVerilog ↔ C communication worked.
+
+---
+
+# 12. Complete DPI-C Flow
+
+The entire process can be remembered as:
+
+```text
+                    SV-146 DPI-C
+                         │
+                         ▼
+              ┌────────────────────┐
+              │ .sv + .c files     │
+              └─────────┬──────────┘
+                        │
+                        ▼
+              ┌────────────────────┐
+              │ cd to source       │
+              │ directory          │
+              └─────────┬──────────┘
+                        │
+                        ▼
+              ┌────────────────────┐
+              │ xsc .c             │
+              │ Compile C code     │
+              └─────────┬──────────┘
+                        │
+                        ▼
+                    dpi.a
+                        │
+                        ▼
+              ┌────────────────────┐
+              │ xvlog -sv .sv      │
+              │ Compile SV         │
+              └─────────┬──────────┘
+                        │
+                        ▼
+              ┌────────────────────┐
+              │ xelab top          │
+              │ -sv_lib dpi        │
+              └─────────┬──────────┘
+                        │
+                        ▼
+              Simulation Snapshot
+                        │
+                        ▼
+              ┌────────────────────┐
+              │ xsim top -runall   │
+              └─────────┬──────────┘
+                        │
+                        ▼
+                 DPI-C: PASS
+```
+
+---
+
+# 13. Commands to Keep for Future DPI-C Work
+
+Assuming you are already inside the folder containing the files:
+
+```tcl
+exec xsc sv_146_dpi_c.c
+exec xvlog -sv sv_146_dpi_c_tb.sv
+exec xelab sv_146_dpi_c_tb -sv_lib dpi
+exec xsim sv_146_dpi_c_tb -runall
+```
+
+Or, from the beginning:
+
+```tcl
+cd {D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new}
+
+pwd
+
+glob *
+
+exec xsc sv_146_dpi_c.c
+
+exec xvlog -sv sv_146_dpi_c_tb.sv
+
+exec xelab sv_146_dpi_c_tb -sv_lib dpi
+
+exec xsim sv_146_dpi_c_tb -runall
+```
+
+---
+
+# 14. One-Line Meaning of Each Command
+
+| Command       | Purpose                                 |
+| ------------- | --------------------------------------- |
+| `cd`          | Move to the folder containing the files |
+| `pwd`         | Check the current folder                |
+| `glob *`      | List files in the folder                |
+| `xsc`         | Compile C/C++ DPI code                  |
+| `xvlog -sv`   | Compile SystemVerilog                   |
+| `xelab`       | Elaborate the simulation                |
+| `-sv_lib dpi` | Link the DPI library                    |
+| `xsim`        | Run the simulation                      |
+| `-runall`     | Run all simulation processes            |
+
+---
+
+# 15. Final Result
+
+**SV-146 — DPI-C: PASS ✅**
+
+We successfully demonstrated:
+
+```text
+SystemVerilog → C function → calculation → SystemVerilog
+```
+
+with:
+
+```text
+25 + 17 = 42
+```
+
+and the final confirmation:
+
+```text
+DPI-C communication: PASS
+```
+
+### The most important thing to remember
+
+For **Vivado Tcl Shell DPI-C**, the basic sequence is:
+
+```text
+XSC → XVLOG → XELAB -SV_LIB → XSIM
+```
+
+or simply:
+
+```text
+C compilation
+     ↓
+SV compilation
+     ↓
+DPI linking/elaboration
+     ↓
+simulation
+```
+
+This is the complete procedure we used successfully for **SV-146**.

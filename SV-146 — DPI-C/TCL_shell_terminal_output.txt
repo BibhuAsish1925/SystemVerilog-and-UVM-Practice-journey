@@ -1,0 +1,23 @@
+Vivado% exec xsim sv_146_dpi_c_tb -runall
+
+****** xsim v2025.1 (64-bit)
+  **** SW Build 6140274 on Thu May 22 00:12:29 MDT 2025
+  **** IP Build 6138677 on Thu May 22 03:10:11 MDT 2025
+  **** SharedData Build 6139179 on Tue May 20 17:58:58 MDT 2025
+  **** Start of session at: Thu Oct  8 19:51:36 2026
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+    ** Copyright 2022-2025 Advanced Micro Devices, Inc. All Rights Reserved.
+
+source xsim.dir/work.sv_146_dpi_c_tb/xsim_script.tcl
+# xsim {work.sv_146_dpi_c_tb} -autoloadwcfg -runall
+Time resolution is 1 ps
+run -all
+C function: received a=25 b=17
+
+SystemVerilog: a = 25
+SystemVerilog: b = 17
+C function result = 42
+DPI-C communication: PASS
+$finish called at time : 0 fs : File "D:/Downloads/Concept practice SV and UVM/sv phase 12/sv phase 12.srcs/sim_1/new/sv_146_dpi_c_tb.sv" Line 30
+exit
+INFO: [Common 17-206] Exiting xsim at Thu Oct  8 19:51:37 2026...
