@@ -30,9 +30,8 @@ In this example, the monitor's analysis port connects to the environment's expor
 
 ### 3. Compact Running Code
 
-systemverilog
+```systemverilog
 
-```
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
