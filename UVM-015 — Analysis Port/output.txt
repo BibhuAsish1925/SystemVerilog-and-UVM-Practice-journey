@@ -1,0 +1,59 @@
+# run 1000ns
+UVM_INFO D:/Downloads/2025.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18601) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test uvm_015_test...
+UVM_INFO D:/Downloads/2025.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(20867) @ 0: reporter [UVM/COMP/NAMECHECK] This implementation of the component name checks requires DPI to be enabled
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(82) @ 10000: uvm_test_top.env.driver [DRIVER] Driving data=0xef
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(125) @ 15000: uvm_test_top.env.monitor [MONITOR] data=0xef output=0x10
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(185) @ 15000: uvm_test_top.env.logger [LOGGER] Transaction 1: data=0xef
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(155) @ 15000: uvm_test_top.env.scoreboard [SCOREBOARD] PASS expected=0x10 actual=0x10
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(82) @ 30000: uvm_test_top.env.driver [DRIVER] Driving data=0xcc
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(125) @ 35000: uvm_test_top.env.monitor [MONITOR] data=0xcc output=0x33
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(185) @ 35000: uvm_test_top.env.logger [LOGGER] Transaction 2: data=0xcc
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(155) @ 35000: uvm_test_top.env.scoreboard [SCOREBOARD] PASS expected=0x33 actual=0x33
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(82) @ 50000: uvm_test_top.env.driver [DRIVER] Driving data=0x81
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(125) @ 55000: uvm_test_top.env.monitor [MONITOR] data=0x81 output=0x7e
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(185) @ 55000: uvm_test_top.env.logger [LOGGER] Transaction 3: data=0x81
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(155) @ 55000: uvm_test_top.env.scoreboard [SCOREBOARD] PASS expected=0x7e actual=0x7e
+UVM_INFO D:/Downloads/2025.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(19968) @ 60000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(191) @ 60000: uvm_test_top.env.logger [LOGGER_SUMMARY] Received 3 transactions
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_015_analysis_port_tb.sv(168) @ 60000: uvm_test_top.env.scoreboard [SUMMARY] Scoreboard PASS=3 ERROR=0
+UVM_INFO D:/Downloads/2025.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(13673) @ 60000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   18
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[DRIVER]     3
+[LOGGER]     3
+[LOGGER_SUMMARY]     1
+[MONITOR]     3
+[RNTST]     1
+[SCOREBOARD]     3
+[SUMMARY]     1
+[TEST_DONE]     1
+[UVM/COMP/NAMECHECK]     1
+[UVM/RELNOTES]     1
+
+$finish called at time : 60 ns 
