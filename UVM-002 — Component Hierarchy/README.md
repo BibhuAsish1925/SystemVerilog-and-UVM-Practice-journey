@@ -1,5 +1,5 @@
 
-# 150 — UVM-002 — Component Hierarchy
+# 151 — UVM-002 — Component Hierarchy
 
 ### 1. Small Introduction
 
