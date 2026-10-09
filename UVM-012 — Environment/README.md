@@ -1,8 +1,16 @@
-# UVM-012 — Environment
+# 161 — UVM-012 — Environment
 
 ### 1. Small Introduction
 
 A UVM environment (`uvm_env`) organizes verification components into a reusable structure.
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <img width="805" height="400" alt="image" src="https://github.com/user-attachments/assets/ec58fadf-3df8-4c07-9f16-1420627eece1" /><br/>
+      <small>Fig.UVM Environment</small>
+    </td>
+</table>
 
 The environment typically contains one or more agents and can also contain scoreboards and coverage collectors.
 
