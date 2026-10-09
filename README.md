@@ -29,3 +29,23 @@ Each topic includes **concepts, runnable code, expected output, Vivado workflow,
 Fundamentals → Advanced SystemVerilog → Randomization & Verification → UVM → Protocol-Based Verification.
 
 *Built step by step, tested through simulation, and documented as my personal learning journey.*
+
+---
+
+## 👨‍💻 Author
+
+**Bibhu Asish Panda**
+
+**B.Tech — Electronics & Communication Engineering**
+
+### Areas of Interest
+
+* RTL Design
+* Design Verification
+* Digital VLSI
+* Memory Design
+* SystemVerilog
+* UVM
+* Physical Design
+* STA
+* RTL-to-GDSII
