@@ -23,9 +23,8 @@ Each phase is a task and can consume simulation time. Objections can be used to 
 
 ### 3. Compact Running Code
 
-systemverilog
+```systemverilog
 
-```
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
