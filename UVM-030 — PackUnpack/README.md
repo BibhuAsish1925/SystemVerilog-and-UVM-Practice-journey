@@ -11,7 +11,7 @@ UVM packing converts transaction fields into a bit stream. Unpacking restores th
 
 ## 2. Complete Runnable Code
 
-```
+```systemverilog
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
