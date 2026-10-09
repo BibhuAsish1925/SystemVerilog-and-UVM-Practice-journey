@@ -9,6 +9,14 @@ A UVM agent groups the sequencer, driver, and monitor into one reusable verifica
 - **Driver:** receives transactions and drives interface signals.
 - **Monitor:** passively samples interface signals and observes transactions.
 
+  <table align="center">
+  <tr>
+    <td align="center">
+      <img width="822" height="242" alt="image" src="https://github.com/user-attachments/assets/665b4671-d215-4134-901d-d655c49c7f1d" /><br/>
+      <small>Fig. UVM Agent</small>
+    </td>
+</table>
+
 An **active agent** creates a sequencer and driver along with a monitor. A **passive agent** typically creates only a monitor.
 
 ### 2. Vivado Flow — Step by Step
