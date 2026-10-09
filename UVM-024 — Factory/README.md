@@ -17,9 +17,7 @@ Registration makes the class available to the factory; it does not create an ins
 
 Create a registered object using:
 
-systemverilog
-
-```
+```systemverilog
 item = uvm_024_item::type_id::create("item");
 ```
 
@@ -27,9 +25,8 @@ Factory creation supports factory overrides, allowing a compatible replacement c
 
 ## 2. Complete Runnable Code
 
-systemverilog
+```systemverilog
 
-```
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
