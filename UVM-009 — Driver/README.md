@@ -5,6 +5,14 @@
 
 A UVM driver receives transaction items from a sequencer and translates them into DUT or interface activity.
 
+<table align="center">
+  <tr>
+    <td align="center">
+      <img width="806" height="541" alt="image" src="https://github.com/user-attachments/assets/6fbb463c-c677-4849-a100-4b2f8b879d5c" /><br/>
+      <small>Fig. UVM Driver</small>
+    </td>
+</table>
+
 Important elements:
 
 - `uvm_driver`: base class for a driver.
