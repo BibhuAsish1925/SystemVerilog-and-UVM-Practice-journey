@@ -24,7 +24,7 @@ The FIFO DUT and UVM testbench are included in one file.
 
 ### 3. Compact Running Code
 
-```
+```systemverilog
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
