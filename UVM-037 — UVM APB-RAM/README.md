@@ -23,7 +23,7 @@ This is a behavioral simulation exercise; synthesis and XDC constraints are not 
 
 ### 3. Compact Running Code
 
-```
+```systemverilog
 
 `include "uvm_macros.svh"
 import uvm_pkg::*;
