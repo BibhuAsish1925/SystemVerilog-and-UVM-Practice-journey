@@ -10,7 +10,7 @@ UVM provides `compare()` to determine whether two objects contain equivalent fie
 
 ## 2. Complete Runnable Code
 
-```
+```systemverilog
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
