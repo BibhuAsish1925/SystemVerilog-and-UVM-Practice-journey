@@ -22,9 +22,8 @@ A TLM FIFO transfers transaction objects between UVM components and stores them 
 
 ### 3. Compact Running Code
 
-systemverilog
+```systemverilog
 
-```
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
