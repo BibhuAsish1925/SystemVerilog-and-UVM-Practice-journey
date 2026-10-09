@@ -10,6 +10,14 @@ A UVM analysis export exposes an analysis interface through an intermediate comp
 
 In this example, the monitor's analysis port connects to the environment's export, which then connects to the scoreboard's implementation.
 
+<table align="center">
+  <tr>
+    <td align="center">
+      <img width="807" height="397" alt="image" src="https://github.com/user-attachments/assets/132e63a0-00c9-46dc-9fd7-e37ec09616a2" /><br/>
+      <small>Fig. UVM Analysis Export</small>
+    </td>
+</table>
+
 ### 2. Vivado Flow — Step by Step
 
 1. Open the existing UVM phase 13 Vivado project.
