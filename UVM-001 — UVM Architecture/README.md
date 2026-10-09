@@ -7,7 +7,7 @@ UVM (Universal Verification Methodology) is a SystemVerilog-based methodology fo
 <table align="center">
   <tr>
     <td align="center">
-      ![alt text](image.png)<br/>
+      <img width="811" height="647" alt="image" src="https://github.com/user-attachments/assets/4a6fe60a-dde5-4877-a07e-3f3b3b57f8a1" /><br/>
       <small>Fig. UVM Architecture</small>
     </td>
 </table>
