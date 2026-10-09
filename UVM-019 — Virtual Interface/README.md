@@ -5,6 +5,14 @@
 
 A virtual interface allows UVM class-based components to access signals declared in a SystemVerilog interface.
 
+<table align="center">
+  <tr>
+    <td align="center">
+      <img width="810" height="532" alt="image" src="https://github.com/user-attachments/assets/5acb5635-b52b-46ea-bfb7-4989c03d1026" /><br/>
+      <small>Fig. UVM Virtual Interface</small>
+    </td>
+</table>
+
 The interface is created in a top-level module and passed to a UVM component through `uvm_config_db`.
 
 - `interface`: groups related signals.
