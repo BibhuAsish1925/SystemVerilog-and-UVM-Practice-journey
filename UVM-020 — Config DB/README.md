@@ -10,9 +10,8 @@
 
 Example syntax:
 
-systemverilog
+```systemverilog
 
-```
 uvm_config_db#(DATA_TYPE)::set(
     context, instance_path, field_name, value
 );
@@ -34,9 +33,8 @@ uvm_config_db#(DATA_TYPE)::get(
 
 ### 3. Compact Running Code
 
-systemverilog
+```systemverilog
 
-```
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
