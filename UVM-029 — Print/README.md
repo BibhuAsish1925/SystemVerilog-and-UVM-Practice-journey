@@ -10,7 +10,7 @@ UVM provides object-printing methods for transaction inspection and debugging.
 
 ## 2. Complete Runnable Code
 
-```
+```systemverilog
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
