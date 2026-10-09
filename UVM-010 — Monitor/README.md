@@ -35,9 +35,8 @@ A monitor differs from a driver because it observes signals instead of generatin
 
 File: `uvm_010_monitor.sv`
 
-systemverilog
+```systemverilog
 
-```
 `timescale 1ns/1ps
 `include "uvm_macros.svh"
 import uvm_pkg::*;
