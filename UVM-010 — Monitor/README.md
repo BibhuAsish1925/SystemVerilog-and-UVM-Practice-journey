@@ -4,16 +4,20 @@
 
 A UVM monitor passively observes DUT interface signals and reconstructs transaction-level information from sampled signal activity.
 
+<table align="center">
+  <tr>
+    <td align="center">
+      <img width="812" height="402" alt="image" src="https://github.com/user-attachments/assets/11ac3cb4-8899-4106-ab02-ca5a2f3d690a" /><br/>
+      <small>Fig.UVM Monitor</small>
+    </td>
+</table>
+
 Main responsibilities:
 
 * Sample interface signals.
-
 * Detect valid transactions.
-
 * Capture transaction fields.
-
 * Report observed transactions.
-
 * Later, publish transactions to a scoreboard or coverage collector.
 
 A monitor differs from a driver because it observes signals instead of generating stimulus.
@@ -21,15 +25,10 @@ A monitor differs from a driver because it observes signals instead of generatin
 ### 2. Vivado Flow
 
 1. Add `uvm_010_monitor.sv` under Simulation Sources.
-
 2. Paste the complete code below.
-
 3. Set `uvm_010_monitor_tb` as the simulation top.
-
 4. Run Run Behavioral Simulation.
-
 5. Execute `run 1000ns` in the Tcl Console.
-
 6. Verify that three `[MONITOR]` messages appear without UVM errors or fatal messages.
 
 ### 3. Compact Running Code
