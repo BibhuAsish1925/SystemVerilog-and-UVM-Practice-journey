@@ -1,0 +1,52 @@
+# run 1000ns
+UVM_INFO D:/Downloads/2025.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(18601) @ 0: reporter [UVM/RELNOTES] 
+----------------------------------------------------------------
+UVM-1.2
+(C) 2007-2014 Mentor Graphics Corporation
+(C) 2007-2014 Cadence Design Systems, Inc.
+(C) 2006-2014 Synopsys, Inc.
+(C) 2011-2013 Cypress Semiconductor Corp.
+(C) 2013-2014 NVIDIA Corporation
+----------------------------------------------------------------
+
+  ***********       IMPORTANT RELEASE NOTES         ************
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_NO_DEPRECATED undefined.
+
+  You are using a version of the UVM library that has been compiled
+  with `UVM_OBJECT_DO_NOT_NEED_CONSTRUCTOR undefined.
+
+      (Specify +UVM_NO_RELNOTES to turn off this notice)
+
+UVM_INFO @ 0: reporter [RNTST] Running test uvm_038_test...
+UVM_INFO D:/Downloads/2025.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(20867) @ 0: reporter [UVM/COMP/NAMECHECK] This implementation of the component name checks requires DPI to be enabled
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(247) @ 50000: uvm_test_top.env.agent.driver [MASTER] WRITE addr=0x1 data=0x000000a5
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(247) @ 80000: uvm_test_top.env.agent.driver [MASTER] WRITE addr=0x2 data=0x0000003c
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(247) @ 110000: uvm_test_top.env.agent.driver [MASTER] WRITE addr=0x3 data=0x000000f0
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(399) @ 135000: uvm_test_top.env.scoreboard [SB] PASS addr=0x1 data=0x000000a5
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(273) @ 140000: uvm_test_top.env.agent.driver [MASTER] READ addr=0x1 data=0x000000a5
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(399) @ 165000: uvm_test_top.env.scoreboard [SB] PASS addr=0x2 data=0x0000003c
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(273) @ 170000: uvm_test_top.env.agent.driver [MASTER] READ addr=0x2 data=0x0000003c
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(399) @ 195000: uvm_test_top.env.scoreboard [SB] PASS addr=0x3 data=0x000000f0
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(273) @ 200000: uvm_test_top.env.agent.driver [MASTER] READ addr=0x3 data=0x000000f0
+UVM_INFO D:/Downloads/2025.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(19968) @ 200000: reporter [TEST_DONE] 'run' phase is ready to proceed to the 'extract' phase
+UVM_INFO D:/Downloads/Concept practice SV and UVM/UVM phase 13/UVM phase 13.srcs/sim_1/new/uvm_038_axi4_lite_tb.sv(406) @ 200000: uvm_test_top.env.scoreboard [SUMMARY] PASS=3 ERROR=0
+UVM_INFO D:/Downloads/2025.1/Vivado/data/system_verilog/uvm_1.2/xlnx_uvm_package.sv(13673) @ 200000: reporter [UVM/REPORT/SERVER] 
+--- UVM Report Summary ---
+
+** Report counts by severity
+UVM_INFO :   14
+UVM_WARNING :    0
+UVM_ERROR :    0
+UVM_FATAL :    0
+** Report counts by id
+[MASTER]     6
+[RNTST]     1
+[SB]     3
+[SUMMARY]     1
+[TEST_DONE]     1
+[UVM/COMP/NAMECHECK]     1
+[UVM/RELNOTES]     1
+
+$finish called at time : 200 ns 
