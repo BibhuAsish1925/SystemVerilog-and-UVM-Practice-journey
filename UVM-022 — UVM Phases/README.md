@@ -17,6 +17,14 @@ UVM phases organize testbench construction, connection, execution, checking, rep
 
 Function phases execute without consuming simulation time. The run phase is a task phase that can consume simulation time.
 
+ <table align="center">
+  <tr>
+    <td align="center">
+      <img width="427" height="402" alt="image" src="https://github.com/user-attachments/assets/72a0dd3a-50d7-4dfd-aa11-236c00030f0c" /><br/>
+      <small>Fig. UVM Phases</small>
+    </td>
+</table>
+
 ### 2. Vivado Flow — Step by Step
 
 1. Open the existing UVM phase 13 Vivado project.
