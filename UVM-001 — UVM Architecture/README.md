@@ -352,3 +352,11 @@ The three PASS messages confirm that the monitor observed the expected data and 
 - The **test** creates the environment and starts the sequence.
 - `uvm_config_db` passes the virtual interface to the driver and monitor.
 - `raise_objection()` and `drop_objection()` control when the UVM run phase can finish.
+
+<table align="center">
+  <tr>
+    <td align="center">
+      <img width="821" height="512" alt="image" src="https://github.com/user-attachments/assets/c9c2f598-1d7c-49b5-8856-6a756443c9e7" /><br/>
+      <small>Fig. Expected Output</small>
+    </td>
+</table>
