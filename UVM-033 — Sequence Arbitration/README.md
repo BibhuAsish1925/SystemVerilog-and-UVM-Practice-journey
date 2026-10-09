@@ -22,7 +22,7 @@ Key concepts:
 
 ### 3. Compact Running Code
 
-
+```systemverilog
 `include "uvm_macros.svh"
 import uvm_pkg::*;
 
@@ -173,7 +173,7 @@ endclass
 module uvm_033_sequence_arbitration_tb;
     initial run_test("uvm_033_test");
 endmodule
-
+```
 
 ### 4. Expected Output
 
