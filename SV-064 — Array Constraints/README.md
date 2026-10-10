@@ -28,23 +28,74 @@ This means every `expected[i]` is calculated from the corresponding `data[i]`.
 
 ### Important points
 
-* Dynamic-array size can be constrained using `size()`.
-* `foreach` applies constraints to each array element.
-* Multiple arrays can be constrained together.
-* Array relationships can be expressed using the same index.
-* All constraints must be satisfied during `randomize()`.
-* In this Vivado/XSim example, dynamic arrays are used to demonstrate the concept in a form that XSim can successfully solve.
+- Dynamic-array size can be constrained using `size()`.
+- `foreach` applies constraints to each array element.
+- Multiple arrays can be constrained together.
+- Array relationships can be expressed using the same index.
+- All constraints must be satisfied during `randomize()`.
+- In this Vivado/XSim example, dynamic arrays are used to demonstrate the concept in a form that XSim can successfully solve.
 
+## Complete Runnable Code
+
+```systemverilog id="x5k1rm"
+module sv_064_array_constraints;
+
+    class transaction;
+
+        rand int data[4];
+
+        // Apply a constraint to every array element
+        constraint data_range {
+            foreach (data[i])
+                data[i] inside {[10:50]};
+        }
+
+        function void display();
+
+            $display("Randomized Array:");
+
+            foreach (data[i])
+                $display("data[%0d] = %0d", i, data[i]);
+
+        endfunction
+
+    endclass
+
+
+    transaction trans;
+
+    initial begin
+
+        trans = new();
+
+        if (trans.randomize())
+            trans.display();
+        else
+            $display("Randomization failed");
+
+    end
+
+endmodule
+```
+
+## Expected Output
+```
+Randomized Array:
+data[0] = 32
+data[1] = 14
+data[2] = 47
+data[3] = 21
+```
 
 ## Verification Relevance
 
 Array constraints are useful when verification transactions contain collections of related values such as:
 
-* burst data
-* packet payloads
-* expected results
-* address/data sequences
-* memory values
+- burst data
+- packet payloads
+- expected results
+- address/data sequences
+- memory values
 
 For example:
 

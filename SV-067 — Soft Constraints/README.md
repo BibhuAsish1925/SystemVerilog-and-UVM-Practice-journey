@@ -69,6 +69,48 @@ Soft constraints are useful for defining **default transaction behavior** while 
 
 This makes transaction classes reusable without requiring the base class to know every test-specific requirement.
 
+## Complete Runnable Code
+
+```systemverilog id="2n7m4x"
+module sv_067_soft_constraints;
+
+    class transaction;
+
+        rand int data;
+
+        // Default constraint
+        constraint data_range {
+            soft data inside {[10:20]};
+        }
+
+        function void display(string label);
+            $display("%s: data = %0d", label, data);
+        endfunction
+
+    endclass
+
+
+    transaction trans;
+
+    initial begin
+
+        trans = new();
+
+        // Uses the default soft constraint
+        if (trans.randomize())
+            trans.display("Default");
+
+        // Inline constraint overrides the soft constraint
+        if (trans.randomize() with {
+            data inside {[50:60]};
+        })
+            trans.display("Override");
+
+    end
+
+endmodule
+```
+
 ## Example Output
 
 ```text id="7p3k9w"

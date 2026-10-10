@@ -11,10 +11,10 @@ else
 
 ### Return Value
 
-| Return value | Meaning                 |
-| ------------ | ----------------------- |
-| `1`          | Randomization succeeded |
-| `0`          | Randomization failed    |
+| Return value | Meaning |
+|---|---|
+| `1` | Randomization succeeded |
+| `0` | Randomization failed |
 
 A failure occurs when the active constraints cannot be satisfied simultaneously.
 
@@ -46,5 +46,57 @@ No such value exists, so `randomize()` returns `0`.
 
 A verification environment should check the result of `randomize()` before using the generated transaction. This allows the testbench to detect invalid constraint combinations instead of silently continuing with an unusable transaction.
 
+### Complete Runnable Code
+
+```systemverilog id="sv051_complete"
+module sv_051_randomization_failure;
+
+    class transaction;
+
+        rand int data;
+
+        // Conflicting constraints
+        constraint valid_range {
+            data >= 10;
+            data <= 20;
+        }
+
+        constraint impossible_range {
+            data > 50;
+        }
+
+    endclass
+
+
+    transaction trans;
+    bit status;
+
+    initial begin
+
+        trans = new();
+
+        // Try to randomize
+        status = trans.randomize();
+
+        if (status) begin
+            $display("Randomization SUCCESS");
+            $display("data = %0d", trans.data);
+        end
+        else begin
+            $display("Randomization FAILED");
+            $display("No value satisfies all constraints");
+        end
+
+    end
+
+endmodule
+```
+
+### Expected Output
+
+```text
+Randomization FAILED
+No value satisfies all constraints
+```
 
 **Key concepts:** `randomize()` return value, successful randomization, failed randomization, conflicting constraints, checking solver status.

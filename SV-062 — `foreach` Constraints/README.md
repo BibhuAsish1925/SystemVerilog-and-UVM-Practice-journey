@@ -24,21 +24,60 @@ applies the same range constraint to every element of `data`.
 
 ### Important points
 
-* `foreach` iterates through array elements during constraint solving.
-* It avoids writing separate constraints for every array index.
-* It is useful for fixed, dynamic, and other supported array types.
-* The array elements can be randomized when declared as `rand`.
-* Each element must satisfy the specified constraint.
+- `foreach` iterates through array elements during constraint solving.
+- It avoids writing separate constraints for every array index.
+- It is useful for fixed, dynamic, and other supported array types.
+- The array elements can be randomized when declared as `rand`.
+- Each element must satisfy the specified constraint.
+
+## Complete Runnable Code
+
+```systemverilog
+module sv_062_foreach_constraints;
+
+    class transaction;
+
+        rand int data[5];
+
+        // Apply the same constraint to every array element
+        constraint data_range {
+            foreach (data[i])
+                data[i] inside {[10:50]};
+        }
+
+        function void display();
+            foreach (data[i])
+                $display("data[%0d] = %0d", i, data[i]);
+        endfunction
+
+    endclass
+
+
+    transaction trans;
+
+    initial begin
+
+        trans = new();
+
+        if (trans.randomize())
+            trans.display();
+        else
+            $display("Randomization failed");
+
+    end
+
+endmodule
+```
 
 ## Verification Relevance
 
 `foreach` constraints are important when verification transactions contain arrays such as:
 
-* burst data
-* packet payloads
-* register values
-* byte arrays
-* memory data
+- burst data
+- packet payloads
+- register values
+- byte arrays
+- memory data
 
 For example:
 
