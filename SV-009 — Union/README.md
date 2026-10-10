@@ -6,8 +6,8 @@ A `union` allows multiple members to **share the same storage location**.
 
 The important difference from a `struct` is:
 
-* **Struct:** each member has separate storage.
-* **Union:** all members share the same storage.
+- **Struct:** each member has separate storage.
+- **Union:** all members share the same storage.
 
 Therefore, writing to one union member changes the value that is seen through the other members.
 
@@ -60,26 +60,26 @@ packet.high_nibble
 
 For `8'hA5`:
 
-* `byte_value` = `A5`
-* `high_nibble` = `5`
+- `byte_value` = `A5`
+- `high_nibble` = `5`
 
 ### Struct vs Union
 
-| Feature                       | Struct               | Union                                  |
-| ----------------------------- | -------------------- | -------------------------------------- |
-| Member storage                | Separate             | Shared                                 |
-| Members coexist independently | Yes                  | No                                     |
-| Packed version                | Yes                  | Yes                                    |
-| Main purpose                  | Group related fields | Interpret the same storage differently |
+| Feature | Struct | Union |
+|---|---|---|
+| Member storage | Separate | Shared |
+| Members coexist independently | Yes | No |
+| Packed version | Yes | Yes |
+| Main purpose | Group related fields | Interpret the same storage differently |
 
 ### Why Union Matters in Verification
 
 Unions can be useful when the same data needs to be interpreted in different forms, such as:
 
-* Different views of packet data
-* Bit-level and field-level interpretation
-* Data representation conversions
-* Protocol-related data handling
+- Different views of packet data
+- Bit-level and field-level interpretation
+- Data representation conversions
+- Protocol-related data handling
 
 The key idea is **shared storage**.
 
@@ -87,7 +87,7 @@ The key idea is **shared storage**.
 
 **Code type:** SystemVerilog simulation/demo — no DUT.
 
-```systemverilog id="6v4m0x"
+```systemverilog 
 module sv_009_union;
 
     // Unpacked union
@@ -96,13 +96,8 @@ module sv_009_union;
         byte byte_value;
     } data_u;
 
-    /*// Packed union
-    typedef union packed {
-        logic [7:0] byte_value;
-        logic [3:0] high_nibble;  // ❌ Different size
-        logic [7:0] bits;
-    } packed_u;*/
-
+    // Packed union
+    // All members must have the same size: 8 bits
     typedef union packed {
         logic [7:0] byte_value;
         logic [7:0] bits;
@@ -113,27 +108,44 @@ module sv_009_union;
     packed_u packet;
 
     initial begin
-        // Both members use the same storage
+        // -------------------------------
+        // Unpacked Union
+        // -------------------------------
         data.int_value = 32'h12345678;
 
         $display("Unpacked Union:");
         $display("int_value  = %h", data.int_value);
 
-        // Writing another member replaces the shared storage
+        // Same storage is now written through byte_value
         data.byte_value = 8'hA5;
 
         $display("byte_value = %h", data.byte_value);
 
-        // Packed union
+        // -------------------------------
+        // Packed Union
+        // -------------------------------
         packet.bits = 8'hA5;
 
         $display("\nPacked Union:");
-        $display("bits        = %h", packet.bits);
-        $display("byte_value  = %h", packet.byte_value);
-        $display("high_nibble = %h", packet.high_nibble);
+        $display("bits         = %h", packet.bits);
+        $display("byte_value   = %h", packet.byte_value);
+        $display("signed_value = %0d", packet.signed_value);
     end
 
 endmodule
+```
+
+## Expected Output
+
+```text
+Unpacked Union:
+int_value  = 12345678
+byte_value = a5
+
+Packed Union:
+bits        = a5
+byte_value  = a5
+high_nibble = 5
 ```
 
 ### Key Syntax
@@ -154,14 +166,6 @@ typedef union packed {
     logic [7:0] byte_value;
     logic [3:0] high_nibble;
 } packed_u;
-```
-
-```systemverilog
-    typedef union packed {
-        logic [7:0] byte_value;
-        logic [7:0] bits;
-        logic signed [7:0] signed_value;
-    } packed_u;
 ```
 
 The central concept is:

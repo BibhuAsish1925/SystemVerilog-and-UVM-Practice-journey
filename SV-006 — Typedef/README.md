@@ -99,28 +99,77 @@ For `state = START`, the output is:
 START
 ```
 
+## Complete Example
+
+```systemverilog id="e7m5bs"
+module sv_006_typedef;
+
+    // Create user-defined type names
+    typedef logic [7:0] data_t;
+    typedef int unsigned count_t;
+
+    // Create an enum type for named states
+    typedef enum {
+        IDLE,
+        START,
+        DONE
+    } state_t;
+
+    data_t  data;
+    count_t count;
+    state_t state;
+
+    initial begin
+        data  = 8'hA5;
+        count = 100;
+        state = IDLE;
+
+        $display("data  = %h", data);
+        $display("count = %0d", count);
+        $display("state = %s", state.name());
+
+        state = START;
+        $display("state = %s", state.name());
+
+        state = DONE;
+        $display("state = %s", state.name());
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text id="3p6wqv"
+data  = a5
+count = 100
+state = IDLE
+state = START
+state = DONE
+```
+
 ## Verification Relevance
 
 `typedef` is heavily used in SystemVerilog verification to create
 meaningful and reusable types for:
 
-* Transaction fields
-* Protocol data
-* Counters
-* Configuration values
-* FSM/protocol states
-* Testbench states
-* UVM sequence items and related types
+- Transaction fields
+- Protocol data
+- Counters
+- Configuration values
+- FSM/protocol states
+- Testbench states
+- UVM sequence items and related types
 
 `typedef enum` is particularly useful when verification code needs
 to represent a finite set of meaningful states.
 
 ## Key Points to Remember
 
-* `typedef` creates a new name for an existing type.
-* User-defined types improve readability and reuse.
-* The `_t` suffix is commonly used for type names.
-* `typedef enum` creates a named enumeration type.
-* Enum values provide readable symbolic names.
-* `.name()` returns the current enum value as a string.
-* Enums are useful for FSM and protocol state representation.
+- `typedef` creates a new name for an existing type.
+- User-defined types improve readability and reuse.
+- The `_t` suffix is commonly used for type names.
+- `typedef enum` creates a named enumeration type.
+- Enum values provide readable symbolic names.
+- `.name()` returns the current enum value as a string.
+- Enums are useful for FSM and protocol state representation.

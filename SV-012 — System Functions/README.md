@@ -4,13 +4,13 @@ SystemVerilog provides several built-in system functions for determining the **s
 
 The important functions in this topic are:
 
-* `$bits`
-* `$size`
-* `$clog2`
-* `$left`
-* `$right`
-* `$high`
-* `$low`
+- `$bits`
+- `$size`
+- `$clog2`
+- `$left`
+- `$right`
+- `$high`
+- `$low`
 
 These functions are particularly useful in verification because they reduce hard-coded widths and array boundaries.
 
@@ -175,12 +175,12 @@ $low(data)   = 0
 
 ## `$left` / `$right` vs `$high` / `$low`
 
-| Function | Meaning                   |
-| -------- | ------------------------- |
-| `$left`  | Leftmost declared index   |
-| `$right` | Rightmost declared index  |
-| `$high`  | Numerically highest index |
-| `$low`   | Numerically lowest index  |
+| Function | Meaning |
+|---|---|
+| `$left` | Leftmost declared index |
+| `$right` | Rightmost declared index |
+| `$high` | Numerically highest index |
+| `$low` | Numerically lowest index |
 
 This distinction becomes important when working with both ascending and descending ranges.
 
@@ -188,12 +188,57 @@ This distinction becomes important when working with both ascending and descendi
 
 These system functions are useful for:
 
-* Automatically determining signal widths
-* Calculating address widths
-* Handling arrays without hard-coded sizes
-* Writing reusable testbench code
-* Iterating through different array ranges
-* Making verification code parameterized and scalable
+- Automatically determining signal widths
+- Calculating address widths
+- Handling arrays without hard-coded sizes
+- Writing reusable testbench code
+- Iterating through different array ranges
+- Making verification code parameterized and scalable
+
+## Complete Runnable Code
+
+**Code type:** SystemVerilog simulation/demo — no DUT.
+
+```systemverilog
+module sv_012_system_functions;
+
+    logic [7:0] data;
+    logic [15:4] range_data;
+    int array [0:4];
+
+    initial begin
+        // $bits: number of bits in a data type/object
+        $display("$bits(data)       = %0d", $bits(data));
+        $display("$bits(range_data) = %0d", $bits(range_data));
+
+        // $size: number of elements in an array
+        $display("$size(array)      = %0d", $size(array));
+
+        // $clog2: ceiling of log2
+        $display("$clog2(10)        = %0d", $clog2(10));
+
+        // Array/range boundary functions
+        $display("$left(array)      = %0d", $left(array));
+        $display("$right(array)     = %0d", $right(array));
+        $display("$high(array)      = %0d", $high(array));
+        $display("$low(array)       = %0d", $low(array));
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+$bits(data)       = 8
+$bits(range_data) = 12
+$size(array)      = 5
+$clog2(10)        = 4
+$left(array)      = 0
+$right(array)     = 4
+$high(array)      = 4
+$low(array)       = 0
+```
 
 ## Key Syntax
 

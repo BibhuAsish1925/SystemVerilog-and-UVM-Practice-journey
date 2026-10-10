@@ -155,29 +155,68 @@ the result is:
 4
 ```
 
+## Complete Example
+
+```systemverilog
+module sv_007_enum;
+
+    typedef enum {
+        IDLE,
+        START,
+        ACTIVE,
+        DONE
+    } state_t;
+
+    state_t state;
+
+    initial begin
+        state = ACTIVE;
+
+        $display("Current = %s", state.name());
+        $display("First   = %s", state.first().name());
+        $display("Last    = %s", state.last().name());
+        $display("Next    = %s", state.next().name());
+        $display("Previous= %s", state.prev().name());
+        $display("Number  = %0d", state.num());
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+Current = ACTIVE
+First   = IDLE
+Last    = DONE
+Next    = DONE
+Previous= START
+Number  = 4
+```
+
 ## Verification Relevance
 
 Enums are useful for representing a fixed set of meaningful states,
 such as:
 
-* FSM states
-* Protocol states
-* Transaction states
-* Testbench modes
-* Driver/monitor states
-* UVM-related state information
+- FSM states
+- Protocol states
+- Transaction states
+- Testbench modes
+- Driver/monitor states
+- UVM-related state information
 
 The enum methods are especially useful for writing readable debug
 messages and navigating through defined states.
 
 ## Key Points to Remember
 
-* `enum` defines a fixed set of named values.
-* Enum values are assigned in declaration order by default.
-* `first()` returns the first enum value.
-* `last()` returns the last enum value.
-* `next()` returns the next value.
-* `prev()` returns the previous value.
-* `name()` returns the current enum value as a string.
-* `num()` returns the total number of enum values.
-* Enums make FSM and verification code more readable than raw numbers.
+- `enum` defines a fixed set of named values.
+- Enum values are assigned in declaration order by default.
+- `first()` returns the first enum value.
+- `last()` returns the last enum value.
+- `next()` returns the next value.
+- `prev()` returns the previous value.
+- `name()` returns the current enum value as a string.
+- `num()` returns the total number of enum values.
+- Enums make FSM and verification code more readable than raw numbers.
