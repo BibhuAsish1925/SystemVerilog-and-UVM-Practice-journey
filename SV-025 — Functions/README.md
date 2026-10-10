@@ -1,4 +1,4 @@
-# SV-025 — Functions
+# 025 — SV-025 — Functions
 
 A **function** is a reusable block of SystemVerilog code that performs a specific operation and returns a value.
 
@@ -25,11 +25,11 @@ endfunction
 
 Here:
 
-* `function` declares the function.
-* `int` is the return type.
-* `add_numbers` is the function name.
-* `a` and `b` are input arguments.
-* `return` provides the function result.
+- `function` declares the function.
+- `int` is the return type.
+- `add_numbers` is the function name.
+- `a` and `b` are input arguments.
+- `return` provides the function result.
 
 ## 2. Function Arguments
 
@@ -65,11 +65,31 @@ $display("%0d", add_numbers(5, 15));
 
 Functions are commonly used in verification for:
 
-* Data calculations
-* Reference-model operations
-* Comparisons and checks
-* Reusable testbench utilities
-* Address/data transformations
-* Protocol-related helper operations
+- Data calculations
+- Reference-model operations
+- Comparisons and checks
+- Reusable testbench utilities
+- Address/data transformations
+- Protocol-related helper operations
 
+## Complete Runnable Code
 
+```systemverilog
+module sv_025_functions;
+
+    // Function declaration with two arguments and an integer return value
+    function int add_numbers(input int a, input int b);
+        return a + b;
+    endfunction
+
+    int result;
+
+    initial begin
+        result = add_numbers(10, 20);
+
+        $display("10 + 20 = %0d", result);
+        $display("5 + 15  = %0d", add_numbers(5, 15));
+    end
+
+endmodule
+```

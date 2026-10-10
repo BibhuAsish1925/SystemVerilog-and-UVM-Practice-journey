@@ -1,4 +1,4 @@
-# SV-029 — Void Functions
+# 029 — SV-029 — Void Functions
 
 A **void function** performs an operation without returning a value.
 
@@ -38,9 +38,9 @@ This is different from declaring the function itself as `void`.
 
 ## Difference
 
-| Syntax              | Meaning                                    |
-| ------------------- | ------------------------------------------ |
-| `function void ...` | Function has no return value               |
+| Syntax | Meaning |
+|---|---|
+| `function void ...` | Function has no return value |
 | `void'(expression)` | Evaluate expression and discard its result |
 
 ## Verification Relevance
@@ -49,8 +49,38 @@ Void functions are useful for reusable operations that only perform an action, w
 
 They can appear in verification code for:
 
-* Utility functions
-* Logging operations
-* Display/reporting helpers
-* Explicitly discarded function results
+- Utility functions
+- Logging operations
+- Display/reporting helpers
+- Explicitly discarded function results
 
+## Complete Runnable Code
+
+```systemverilog
+module sv_029_void_functions;
+
+    // Void function: performs an operation without returning a value
+    function void print_sum(input int a, input int b);
+        $display("Sum = %0d", a + b);
+    endfunction
+
+    // Normal function returning an integer
+    function int multiply(input int a, input int b);
+        return a * b;
+    endfunction
+
+    int result;
+
+    initial begin
+        print_sum(10, 20);
+
+        result = multiply(5, 4);
+        $display("Product = %0d", result);
+
+        // Evaluate the function but intentionally discard its return value
+        void'(multiply(7, 3));
+        $display("Return value discarded using void'()");
+    end
+
+endmodule
+```

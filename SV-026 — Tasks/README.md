@@ -1,4 +1,4 @@
-# SV-026 — Tasks
+# 026 — SV-026 — Tasks
 
 A **task** is a reusable block of SystemVerilog code that can perform multiple operations and can contain timing controls.
 
@@ -48,13 +48,34 @@ These allow tasks to model activities that depend on simulation events.
 
 Tasks are commonly used in verification for:
 
-* Driving stimulus
-* Waiting for clock edges
-* Applying transactions
-* Reset sequences
-* Protocol operations
-* Reusable testbench procedures
+- Driving stimulus
+- Waiting for clock edges
+- Applying transactions
+- Reset sequences
+- Protocol operations
+- Reusable testbench procedures
 
 For example, a testbench task can drive a complete transaction and wait for the DUT to respond.
 
+## Complete Runnable Code
 
+```systemverilog
+module sv_026_tasks;
+
+    // Task with an input argument and timing control
+    task automatic print_message(input string message);
+        #10;
+        $display("[%0t] %s", $time, message);
+    endtask
+
+    initial begin
+        $display("[%0t] Start", $time);
+
+        print_message("First task call");
+        print_message("Second task call");
+
+        $display("[%0t] End", $time);
+    end
+
+endmodule
+```

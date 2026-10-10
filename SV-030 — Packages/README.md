@@ -1,14 +1,14 @@
-# SV-030 — Packages
+# 030 — SV-030 — Packages
 
 A **package** groups related SystemVerilog declarations into a common namespace.
 
 Packages can contain items such as:
 
-* Parameters
-* Typedefs
-* Functions
-* Tasks
-* Classes
+- Parameters
+- Typedefs
+- Functions
+- Tasks
+- Classes
 
 They are especially useful in verification because common definitions can be shared across multiple testbench components.
 
@@ -72,13 +72,53 @@ common_pkg::DATA_WIDTH
 
 Packages are fundamental in larger verification environments because they allow common definitions to be shared between:
 
-* Testbenches
-* Transactions
-* Interfaces
-* Drivers
-* Monitors
-* Scoreboards
-* UVM components
+- Testbenches
+- Transactions
+- Interfaces
+- Drivers
+- Monitors
+- Scoreboards
+- UVM components
 
 For example, transaction types and common parameters can be declared once in a package and reused throughout the verification environment.
 
+## Complete Runnable Code
+
+```systemverilog id="d5k8r2"
+package common_pkg;
+
+    parameter int DATA_WIDTH = 8;
+
+    typedef logic [DATA_WIDTH-1:0] data_t;
+
+    function automatic int add_numbers(input int a, input int b);
+        return a + b;
+    endfunction
+
+endpackage
+
+
+module sv_030_packages;
+
+    // Import package members into this scope
+    import common_pkg::*;
+
+    data_t data;
+    int result;
+
+    initial begin
+        data = 8'hA5;
+
+        // Access imported members directly
+        result = add_numbers(10, 20);
+
+        $display("DATA_WIDTH = %0d", DATA_WIDTH);
+        $display("data       = %h", data);
+        $display("sum        = %0d", result);
+
+        // Explicit package access using scope resolution
+        $display("Package DATA_WIDTH = %0d", common_pkg::DATA_WIDTH);
+    end
+
+endmodule
+```
