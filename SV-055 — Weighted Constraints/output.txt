@@ -1,0 +1,11 @@
+# run 1000ns
+Transaction 1: data = 1
+Transaction 2: data = 0
+Transaction 3: data = 1
+Transaction 4: data = 1
+Transaction 5: data = 5
+Transaction 6: data = 3
+Transaction 7: data = 3
+Transaction 8: data = 2
+Transaction 9: data = 2
+Transaction 10: data = 1

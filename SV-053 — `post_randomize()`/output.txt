@@ -1,0 +1,4 @@
+# run 1000ns
+post_randomize() called
+Randomized data = 1022094269
+Double data     = 2044188538

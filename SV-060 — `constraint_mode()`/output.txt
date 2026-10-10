@@ -1,0 +1,4 @@
+# run 1000ns
+Constraint enabled: data = 10
+Constraint disabled: data = 543839453
+Constraint enabled again: data = 17

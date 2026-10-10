@@ -1,0 +1,4 @@
+# run 1000ns
+Both enabled: data = 15 | address = 164
+Data disabled: data = 15 | address = 103
+Both enabled again: data = 12 | address = 197

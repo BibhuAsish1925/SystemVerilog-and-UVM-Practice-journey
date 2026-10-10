@@ -1,0 +1,4 @@
+# run 1000ns
+Base constraint: data = 58
+Inline constraint: data = 55
+Exact value: data = 75

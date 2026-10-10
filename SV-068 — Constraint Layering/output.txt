@@ -1,0 +1,4 @@
+# run 1000ns
+Class constraint: data = 61
+Class + inline constraint: data = 55
+Class + exact inline constraint: data = 75
