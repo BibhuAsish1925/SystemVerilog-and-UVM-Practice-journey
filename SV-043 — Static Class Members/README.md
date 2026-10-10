@@ -4,8 +4,8 @@ A **static class member** belongs to the class rather than to an individual obje
 
 SystemVerilog supports:
 
-* Static properties
-* Static methods
+- Static properties
+- Static methods
 
 ## 1. Static Property
 
@@ -85,17 +85,83 @@ Both objects access the same `object_count`.
 
 A static method also does not represent a particular object, so it should not directly access instance properties such as `data`.
 
+## 4. Complete Runnable Example
+
+```systemverilog id="c7m4qz"
+module sv_043_static_class_members;
+
+    class transaction;
+
+        // Static property shared by all objects
+        static int object_count;
+
+        // Instance property
+        int data;
+
+        // Constructor
+        function new(int data);
+            this.data = data;
+            object_count++;
+        endfunction
+
+        // Static method
+        static function void display_count();
+            $display("Total objects created = %0d", object_count);
+        endfunction
+
+        // Instance method
+        function void display_data();
+            $display("Data = %0d", data);
+        endfunction
+
+    endclass
+
+
+    transaction trans1;
+    transaction trans2;
+
+    initial begin
+
+        // Create first object
+        trans1 = new(100);
+
+        // Create second object
+        trans2 = new(200);
+
+        // Instance methods access individual object data
+        trans1.display_data();
+        trans2.display_data();
+
+        // Static property is shared by both objects
+        $display("Shared count = %0d", transaction::object_count);
+
+        // Static method called using class scope
+        transaction::display_count();
+
+    end
+
+endmodule
+```
+
+### Expected Output
+
+```text
+Data = 100
+Data = 200
+Shared count = 2
+Total objects created = 2
+```
 
 ### Key Concepts
 
-| Concept             | Meaning                                                          |
-| ------------------- | ---------------------------------------------------------------- |
-| `static` property   | One shared property for the entire class                         |
-| `static` method     | Method associated with the class rather than a particular object |
-| Instance property   | Separate copy for each object                                    |
-| Instance method     | Operates in the context of a particular object                   |
-| `ClassName::member` | Class-scope access to a static member                            |
-| Shared property     | Same value is visible across all objects                         |
+| Concept | Meaning |
+|---|---|
+| `static` property | One shared property for the entire class |
+| `static` method | Method associated with the class rather than a particular object |
+| Instance property | Separate copy for each object |
+| Instance method | Operates in the context of a particular object |
+| `ClassName::member` | Class-scope access to a static member |
+| Shared property | Same value is visible across all objects |
 
 ### Static vs Instance
 

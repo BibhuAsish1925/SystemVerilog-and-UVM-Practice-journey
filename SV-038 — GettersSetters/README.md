@@ -63,16 +63,67 @@ trans.get_data();
 
 This creates a controlled interface between the object and external code.
 
+## 4. Complete Runnable Example
+
+```systemverilog id="h8r5kc"
+module sv_038_getters_setters;
+
+    class transaction;
+
+        // Internal property
+        local int data;
+
+        // Setter: controlled write access
+        function void set_data(int new_data);
+            data = new_data;
+        endfunction
+
+        // Getter: controlled read access
+        function int get_data();
+            return data;
+        endfunction
+
+    endclass
+
+
+    transaction trans;
+
+    initial begin
+
+        trans = new();
+
+        // Set property through setter
+        trans.set_data(100);
+
+        // Read property through getter
+        $display("Data = %0d", trans.get_data());
+
+        // Update property through setter
+        trans.set_data(250);
+
+        $display("Updated Data = %0d", trans.get_data());
+
+    end
+
+endmodule
+```
+
+### Expected Output
+
+```text id="b4t7mz"
+Data = 100
+Updated Data = 250
+```
 
 ### Key Concepts
 
-| Concept      | Purpose                                        |
-| ------------ | ---------------------------------------------- |
-| Getter       | Reads and returns a property                   |
-| Setter       | Modifies a property                            |
-| `local`      | Restricts direct access to the declaring class |
-| `get_data()` | Controlled read interface                      |
-| `set_data()` | Controlled write interface                     |
+| Concept | Purpose |
+|---|---|
+| Getter | Reads and returns a property |
+| Setter | Modifies a property |
+| `local` | Restricts direct access to the declaring class |
+| `get_data()` | Controlled read interface |
+| `set_data()` | Controlled write interface |
 
 ### Basic Flow
 

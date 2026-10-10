@@ -46,28 +46,86 @@ endclass
 
 The child inherits:
 
-* `data`
-* `display()`
+- `data`
+- `display()`
 
 The child additionally defines:
 
-* `name`
-* `display_child()`
+- `name`
+- `display_child()`
 
 Therefore, the child object can access both inherited and child-specific members.
 
+## 3. Complete Runnable Example
+
+```systemverilog id="rj8c4m"
+module sv_035_inheritance;
+
+    // Parent class
+    class transaction;
+
+        int data;
+
+        function void display();
+            $display("Parent: Data = %0d", data);
+        endfunction
+
+    endclass
+
+    // Child class
+    class extended_transaction extends transaction;
+
+        string name;
+
+        function void display_child();
+            $display("Child: Name = %s | Data = %0d", name, data);
+        endfunction
+
+    endclass
+
+    // Child object handle
+    extended_transaction trans;
+
+    initial begin
+
+        // Create child object
+        trans = new();
+
+        // Inherited property
+        trans.data = 100;
+
+        // Child property
+        trans.name = "Transaction-1";
+
+        // Inherited method
+        trans.display();
+
+        // Child method
+        trans.display_child();
+
+    end
+
+endmodule
+```
+
+### Expected Output
+
+```text
+Parent: Data = 100
+Child: Name = Transaction-1 | Data = 100
+```
 
 ### Key Concepts
 
-| Concept            | Meaning                                            |
-| ------------------ | -------------------------------------------------- |
-| Parent class       | Base class containing common functionality         |
-| Child class        | Class derived from the parent                      |
-| `extends`          | Creates an inheritance relationship                |
+| Concept | Meaning |
+|---|---|
+| Parent class | Base class containing common functionality |
+| Child class | Class derived from the parent |
+| `extends` | Creates an inheritance relationship |
 | Inherited property | Parent data member accessible through child object |
-| Inherited method   | Parent method accessible through child object      |
-| Child property     | Additional data member defined by the child        |
-| Child method       | Additional method defined by the child             |
+| Inherited method | Parent method accessible through child object |
+| Child property | Additional data member defined by the child |
+| Child method | Additional method defined by the child |
 
 ### Inheritance Relationship
 

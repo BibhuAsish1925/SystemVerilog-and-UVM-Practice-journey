@@ -1,4 +1,4 @@
-# SV-032 — Classes & Objects
+# 032 — SV-032 — Classes & Objects
 
 Classes are the foundation of **object-oriented programming in SystemVerilog** and are widely used in verification.
 
@@ -19,8 +19,8 @@ endclass
 
 The class contains:
 
-* **Properties** — data stored by the object.
-* **Methods** — functions or tasks that operate on the object.
+- **Properties** — data stored by the object.
+- **Methods** — functions or tasks that operate on the object.
 
 ## 2. Object Handle
 
@@ -71,12 +71,51 @@ Access properties/methods
 
 Classes are fundamental to SystemVerilog verification because they are used to model:
 
-* Transactions
-* Stimulus
-* Configuration objects
-* Drivers
-* Monitors
-* Scoreboards
-* Reusable verification components
+- Transactions
+- Stimulus
+- Configuration objects
+- Drivers
+- Monitors
+- Scoreboards
+- Reusable verification components
 
 This concept is the starting point for the object-oriented features used later in SystemVerilog and UVM.
+
+## Complete Runnable Code
+
+```systemverilog
+module sv_032_classes_objects;
+
+    // Class declaration
+    class transaction;
+
+        int data;
+        string name;
+
+        // Constructor
+        function new(int data, string name);
+            this.data = data;
+            this.name = name;
+        endfunction
+
+        function void display();
+            $display("Name = %s | Data = %0d", name, data);
+        endfunction
+
+    endclass
+
+    // Object handle
+    transaction trans;
+
+    initial begin
+
+        // Create object using new()
+        trans = new(100, "Transaction-1");
+
+        // Access object properties and method
+        trans.display();
+
+    end
+
+endmodule
+```

@@ -70,16 +70,90 @@ Parent handle
       └──→ Read object  → Read display()
 ```
 
+## 4. Complete Runnable Example
+
+```systemverilog id="z6m3qv"
+module sv_040_virtual_methods;
+
+    // Parent class
+    class transaction;
+
+        virtual function void display();
+            $display("Parent transaction");
+        endfunction
+
+    endclass
+
+
+    // Child class 1
+    class write_transaction extends transaction;
+
+        function void display();
+            $display("Write transaction");
+        endfunction
+
+    endclass
+
+
+    // Child class 2
+    class read_transaction extends transaction;
+
+        function void display();
+            $display("Read transaction");
+        endfunction
+
+    endclass
+
+
+    // Parent handle
+    transaction trans;
+
+    // Child handles
+    write_transaction write_trans;
+    read_transaction read_trans;
+
+    initial begin
+
+        // Create write object
+        write_trans = new();
+
+        // Parent handle refers to write object
+        trans = write_trans;
+
+        // Dynamic dispatch calls write version
+        trans.display();
+
+
+        // Create read object
+        read_trans = new();
+
+        // Parent handle refers to read object
+        trans = read_trans;
+
+        // Dynamic dispatch calls read version
+        trans.display();
+
+    end
+
+endmodule
+```
+
+### Expected Output
+
+```text id="b3x8np"
+Write transaction
+Read transaction
+```
 
 ### Key Concepts
 
-| Concept          | Meaning                                                  |
-| ---------------- | -------------------------------------------------------- |
-| `virtual`        | Enables runtime/dynamic dispatch for a method            |
-| Parent handle    | Handle declared using the base-class type                |
-| Child object     | Object created from a derived class                      |
-| Override         | Child provides its own implementation of a parent method |
-| Dynamic dispatch | Runtime selection of the overridden method               |
+| Concept | Meaning |
+|---|---|
+| `virtual` | Enables runtime/dynamic dispatch for a method |
+| Parent handle | Handle declared using the base-class type |
+| Child object | Object created from a derived class |
+| Override | Child provides its own implementation of a parent method |
+| Dynamic dispatch | Runtime selection of the overridden method |
 
 ### Dynamic Dispatch Flow
 
