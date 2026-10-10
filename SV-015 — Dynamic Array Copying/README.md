@@ -119,15 +119,74 @@ Only the elements that fit into the new array are preserved.
 
 Dynamic array copying is useful when:
 
-* Test data needs to grow during simulation
-* Existing transaction data must be preserved
-* Variable-length packets are being constructed
-* Test vectors need resizing
-* A larger or smaller working array is required
+- Test data needs to grow during simulation
+- Existing transaction data must be preserved
+- Variable-length packets are being constructed
+- Test vectors need resizing
+- A larger or smaller working array is required
 
 The key concept is:
 
 > **`new[size](array)` allocates a new dynamic array and copies the existing elements into it, up to the available size.**
+
+## Complete Runnable Code
+
+**Code type:** SystemVerilog simulation/demo — no DUT.
+
+```systemverilog
+module sv_015_dynamic_array_copying;
+
+    int source[];
+    int copy[];
+
+    initial begin
+        // Create and initialize source array
+        source = new[5];
+
+        foreach (source[i])
+            source[i] = (i + 1) * 10;
+
+        $display("Source array:");
+        foreach (source[i])
+            $display("source[%0d] = %0d", i, source[i]);
+
+        // Copy source into a larger dynamic array
+        copy = new[8](source);
+
+        $display("\nCopied array:");
+        foreach (copy[i])
+            $display("copy[%0d] = %0d", i, copy[i]);
+
+        $display("\nSource size = %0d", source.size());
+        $display("Copy size   = %0d", copy.size());
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+Source array:
+source[0] = 10
+source[1] = 20
+source[2] = 30
+source[3] = 40
+source[4] = 50
+
+Copied array:
+copy[0] = 10
+copy[1] = 20
+copy[2] = 30
+copy[3] = 40
+copy[4] = 50
+copy[5] = 0
+copy[6] = 0
+copy[7] = 0
+
+Source size = 5
+Copy size   = 8
+```
 
 ## Key Syntax
 

@@ -8,12 +8,12 @@ SystemVerilog supports one-dimensional and multidimensional fixed arrays.
 
 Fixed arrays are commonly used in verification for:
 
-* Test data
-* Expected results
-* Lookup tables
-* Memory models
-* Groups of related values
-* Transaction data
+- Test data
+- Expected results
+- Lookup tables
+- Memory models
+- Groups of related values
+- Transaction data
 
 ## 1D Fixed Array
 
@@ -55,9 +55,9 @@ int matrix [2][3];
 
 This creates:
 
-* 2 rows
-* 3 columns
-* 6 total elements
+- 2 rows
+- 3 columns
+- 6 total elements
 
 The elements are accessed using two indices:
 
@@ -155,6 +155,72 @@ Lookup tables:     Constant-size reference data
 ```
 
 They provide predictable storage and straightforward indexing.
+
+## Complete Runnable Code
+
+**Code type:** SystemVerilog simulation/demo — no DUT.
+
+```systemverilog
+module sv_013_fixed_arrays;
+
+    // 1D fixed array
+    int numbers [5];
+
+    // 2D fixed array
+    int matrix [2][3];
+
+    initial begin
+        // 1D array initialization
+        numbers = '{10, 20, 30, 40, 50};
+
+        $display("1D Fixed Array:");
+        foreach (numbers[i])
+            $display("numbers[%0d] = %0d", i, numbers[i]);
+
+        // 2D array initialization
+        matrix = '{
+            '{1, 2, 3},
+            '{4, 5, 6}
+        };
+
+        $display("\n2D Fixed Array:");
+        foreach (matrix[i, j])
+            $display("matrix[%0d][%0d] = %0d",
+                     i, j, matrix[i][j]);
+
+        // Array dimensions
+        $display("\nArray Information:");
+        $display("numbers size = %0d", $size(numbers));
+        $display("matrix rows  = %0d", $size(matrix, 1));
+        $display("matrix cols  = %0d", $size(matrix, 2));
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+1D Fixed Array:
+numbers[0] = 10
+numbers[1] = 20
+numbers[2] = 30
+numbers[3] = 40
+numbers[4] = 50
+
+2D Fixed Array:
+matrix[0][0] = 1
+matrix[0][1] = 2
+matrix[0][2] = 3
+matrix[1][0] = 4
+matrix[1][1] = 5
+matrix[1][2] = 6
+
+Array Information:
+numbers size = 5
+matrix rows  = 2
+matrix cols  = 3
+```
 
 ## Key Syntax
 

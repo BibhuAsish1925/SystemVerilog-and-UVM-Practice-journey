@@ -74,11 +74,11 @@ foreach (matrix[i, j])
 
 This makes it useful for:
 
-* Displaying array contents.
-* Calculating values.
-* Checking elements.
-* Modifying elements.
-* Processing transaction arrays in verification.
+- Displaying array contents.
+- Calculating values.
+- Checking elements.
+- Modifying elements.
+- Processing transaction arrays in verification.
 
 For example, calculating a sum:
 
@@ -93,18 +93,60 @@ foreach (data[i])
 
 Array iteration is frequently used in verification for:
 
-* Traversing transaction arrays.
-* Checking expected values.
-* Processing stimulus.
-* Calculating reference-model results.
-* Inspecting queues and other SystemVerilog collections.
-* Writing concise testbench code without manually managing indexes.
+- Traversing transaction arrays.
+- Checking expected values.
+- Processing stimulus.
+- Calculating reference-model results.
+- Inspecting queues and other SystemVerilog collections.
+- Writing concise testbench code without manually managing indexes.
+
+## Complete Runnable Code
+
+```systemverilog id="n8q4fd"
+module sv_023_array_iteration;
+
+    int data[5] = '{10, 20, 30, 40, 50};
+    int sum;
+
+    initial begin
+        $display("Array traversal:");
+
+        // Iterator variable i represents the array index
+        foreach (data[i]) begin
+            $display("data[%0d] = %0d", i, data[i]);
+        end
+
+        // Use iterator to calculate the sum
+        sum = 0;
+
+        foreach (data[i]) begin
+            sum += data[i];
+        end
+
+        $display("\nSum = %0d", sum);
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text id="t2x6qm"
+Array traversal:
+data[0] = 10
+data[1] = 20
+data[2] = 30
+data[3] = 40
+data[4] = 50
+
+Sum = 150
+```
 
 ## Key Takeaways
 
-* `foreach` provides convenient array traversal.
-* The variable inside `foreach` acts as the **iterator variable**.
-* The iterator represents the current array index.
-* `data[i]` accesses the current element.
-* Multiple iterator variables can be used for multidimensional arrays.
-* `foreach` is widely used in verification because it produces concise and readable array-processing code.
+- `foreach` provides convenient array traversal.
+- The variable inside `foreach` acts as the **iterator variable**.
+- The iterator represents the current array index.
+- `data[i]` accesses the current element.
+- Multiple iterator variables can be used for multidimensional arrays.
+- `foreach` is widely used in verification because it produces concise and readable array-processing code.

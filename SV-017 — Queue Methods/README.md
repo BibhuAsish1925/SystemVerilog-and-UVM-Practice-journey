@@ -8,12 +8,12 @@ These operations are useful in verification for dynamically managing collections
 
 ## Important Queue Methods
 
-| Method / Syntax        | Purpose                                    |
-| ---------------------- | ------------------------------------------ |
-| `insert(index, value)` | Inserts `value` at the specified index     |
-| `delete(index)`        | Removes the element at the specified index |
-| `size()`               | Returns the current number of elements     |
-| `queue[index]`         | Accesses an element at a specific index    |
+| Method / Syntax | Purpose |
+|---|---|
+| `insert(index, value)` | Inserts `value` at the specified index |
+| `delete(index)` | Removes the element at the specified index |
+| `size()` | Returns the current number of elements |
+| `queue[index]` | Accesses an element at a specific index |
 
 ## Indexing
 
@@ -68,16 +68,77 @@ returns the current number of elements in the queue.
 
 Queue methods are useful for:
 
-* Managing expected transactions.
-* Inserting transactions at specific positions.
-* Removing processed transactions.
-* Accessing individual transactions by index.
-* Tracking the current number of pending transactions.
+- Managing expected transactions.
+- Inserting transactions at specific positions.
+- Removing processed transactions.
+- Accessing individual transactions by index.
+- Tracking the current number of pending transactions.
+
+## Complete Runnable Code
+
+```systemverilog id="n7k2qm"
+module sv_017_queue_methods;
+
+    int queue[$];
+    int value;
+
+    initial begin
+        // Initialize queue
+        queue = '{10, 20, 30, 40};
+
+        $display("Initial queue:");
+        $display("queue = %p", queue);
+
+        // Indexing
+        $display("\nIndexing:");
+        $display("queue[0] = %0d", queue[0]);
+        $display("queue[2] = %0d", queue[2]);
+
+        // Insert 25 at index 2
+        queue.insert(2, 25);
+
+        $display("\nAfter insert(2, 25):");
+        $display("queue = %p", queue);
+
+        // Delete element at index 3
+        value = queue[3];
+        queue.delete(3);
+
+        $display("\nDeleted value = %0d", value);
+        $display("After delete(3):");
+        $display("queue = %p", queue);
+
+        // Queue size
+        $display("\nQueue size = %0d", queue.size());
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+Initial queue:
+queue = '{10, 20, 30, 40}
+
+Indexing:
+queue[0] = 10
+queue[2] = 30
+
+After insert(2, 25):
+queue = '{10, 20, 25, 30, 40}
+
+Deleted value = 30
+After delete(3):
+queue = '{10, 20, 25, 40}
+
+Queue size = 4
+```
 
 ## Key Takeaways
 
-* `queue[index]` accesses an individual element.
-* `insert(index, value)` adds an element at a specific position.
-* `delete(index)` removes an element from a specific position.
-* `size()` returns the current queue length.
-* These methods make queues flexible for SystemVerilog verification environments.
+- `queue[index]` accesses an individual element.
+- `insert(index, value)` adds an element at a specific position.
+- `delete(index)` removes an element from a specific position.
+- `size()` returns the current queue length.
+- These methods make queues flexible for SystemVerilog verification environments.

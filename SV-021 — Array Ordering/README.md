@@ -6,12 +6,12 @@ SystemVerilog provides built-in methods for rearranging elements of an unpacked 
 
 The four important array ordering methods are:
 
-| Method      | Purpose                            |
-| ----------- | ---------------------------------- |
-| `sort()`    | Sorts elements in ascending order  |
-| `rsort()`   | Sorts elements in descending order |
+| Method | Purpose |
+|---|---|
+| `sort()` | Sorts elements in ascending order |
+| `rsort()` | Sorts elements in descending order |
 | `reverse()` | Reverses the current element order |
-| `shuffle()` | Randomly rearranges the elements   |
+| `shuffle()` | Randomly rearranges the elements |
 
 These methods are useful in verification when test data or transactions need to be sorted, reversed, or randomly reordered.
 
@@ -93,21 +93,79 @@ The elements remain the same, but their order changes.
 
 Array ordering methods are useful for:
 
-* Sorting expected transaction data.
-* Organizing test data.
-* Reversing transaction sequences.
-* Randomizing the order of stimulus.
-* Preparing arrays for comparison.
-* Creating varied transaction sequences during verification.
+- Sorting expected transaction data.
+- Organizing test data.
+- Reversing transaction sequences.
+- Randomizing the order of stimulus.
+- Preparing arrays for comparison.
+- Creating varied transaction sequences during verification.
+
+## Complete Runnable Code
+
+```systemverilog id="m7q3fd"
+module sv_021_array_ordering;
+
+    int data[6] = '{40, 10, 60, 20, 50, 30};
+
+    initial begin
+        $display("Original array:");
+        $display("data = %p", data);
+
+        // Sort in ascending order
+        data.sort();
+
+        $display("\nAfter sort():");
+        $display("data = %p", data);
+
+        // Sort in descending order
+        data.rsort();
+
+        $display("\nAfter rsort():");
+        $display("data = %p", data);
+
+        // Reverse current order
+        data.reverse();
+
+        $display("\nAfter reverse():");
+        $display("data = %p", data);
+
+        // Randomly shuffle elements
+        data.shuffle();
+
+        $display("\nAfter shuffle():");
+        $display("data = %p", data);
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+Original array:
+data = '{40, 10, 60, 20, 50, 30}
+
+After sort():
+data = '{10, 20, 30, 40, 50, 60}
+
+After rsort():
+data = '{60, 50, 40, 30, 20, 10}
+
+After reverse():
+data = '{10, 20, 30, 40, 50, 60}
+
+After shuffle():
+data = '{...random order...}
+```
 
 The `shuffle()` result is intentionally not fixed because it randomly rearranges the elements on each simulation run.
 
 ## Key Takeaways
 
-* `sort()` → ascending order.
-* `rsort()` → descending order.
-* `reverse()` → reverses the current order.
-* `shuffle()` → randomly rearranges elements.
-* These methods modify the array directly.
-* `shuffle()` can produce a different ordering on different simulation runs.
-* Array ordering methods are useful for efficient stimulus and transaction manipulation in verification.
+- `sort()` → ascending order.
+- `rsort()` → descending order.
+- `reverse()` → reverses the current order.
+- `shuffle()` → randomly rearranges elements.
+- These methods modify the array directly.
+- `shuffle()` can produce a different ordering on different simulation runs.
+- Array ordering methods are useful for efficient stimulus and transaction manipulation in verification.

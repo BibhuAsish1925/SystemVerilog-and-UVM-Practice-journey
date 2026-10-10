@@ -128,26 +128,88 @@ This is useful when dynamically allocated testbench data is no longer required.
 
 ## Dynamic Array Operations
 
-| Operation       | Purpose                             |
-| --------------- | ----------------------------------- |
-| `int data[];`   | Declare dynamic array               |
-| `new[N]`        | Allocate `N` elements               |
-| `new[N](data)`  | Resize and preserve existing values |
-| `data.size()`   | Return current number of elements   |
-| `data.delete()` | Delete all elements                 |
+| Operation | Purpose |
+|---|---|
+| `int data[];` | Declare dynamic array |
+| `new[N]` | Allocate `N` elements |
+| `new[N](data)` | Resize and preserve existing values |
+| `data.size()` | Return current number of elements |
+| `data.delete()` | Delete all elements |
 
 ## Why Dynamic Arrays Matter in Verification
 
 Dynamic arrays are useful when testbench data is variable in size, for example:
 
-* Variable-length packets
-* Test vectors
-* Transaction data
-* Memory models
-* Runtime-generated stimulus
-* Collections whose size is determined during simulation
+- Variable-length packets
+- Test vectors
+- Transaction data
+- Memory models
+- Runtime-generated stimulus
+- Collections whose size is determined during simulation
 
 They provide more flexibility than fixed arrays while still using indexed array access.
+
+## Complete Runnable Code
+
+**Code type:** SystemVerilog simulation/demo — no DUT.
+
+```systemverilog
+module sv_014_dynamic_arrays;
+
+    int data[];
+
+    initial begin
+        // Allocate 5 elements
+        data = new[5];
+
+        // Initialize values
+        foreach (data[i])
+            data[i] = (i + 1) * 10;
+
+        $display("Initial size = %0d", data.size());
+
+        foreach (data[i])
+            $display("data[%0d] = %0d", i, data[i]);
+
+        // Resize to 8 elements and preserve old values
+        data = new[8](data);
+
+        $display("\nAfter resize = %0d", data.size());
+
+        foreach (data[i])
+            $display("data[%0d] = %0d", i, data[i]);
+
+        // Delete the dynamic array
+        data.delete();
+
+        $display("\nAfter delete = %0d", data.size());
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+Initial size = 5
+data[0] = 10
+data[1] = 20
+data[2] = 30
+data[3] = 40
+data[4] = 50
+
+After resize = 8
+data[0] = 10
+data[1] = 20
+data[2] = 30
+data[3] = 40
+data[4] = 50
+data[5] = 0
+data[6] = 0
+data[7] = 0
+
+After delete = 0
+```
 
 ## Key Syntax
 
