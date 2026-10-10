@@ -49,3 +49,6 @@ Fundamentals → Advanced SystemVerilog → Randomization & Verification → UVM
 * Physical Design
 * STA
 * RTL-to-GDSII
+
+[GitHub](https://github.com/BibhuAsish1925) ·
+[LinkedIn](www.linkedin.com/in/bibhu-asish-panda-05332b288)
