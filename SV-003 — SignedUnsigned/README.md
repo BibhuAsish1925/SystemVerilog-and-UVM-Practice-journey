@@ -7,11 +7,11 @@ SystemVerilog values can be declared as either **signed** or
 
 This affects how the same binary bits are interpreted during:
 
-* Arithmetic
-* Comparisons
-* Assignments
-* Size conversion
-* Sign extension
+- Arithmetic
+- Comparisons
+- Assignments
+- Size conversion
+- Sign extension
 
 ### Signed
 
@@ -114,6 +114,49 @@ logic unsigned [7:0] b;
 
 `unsigned` is also the default for `logic` unless `signed` is specified.
 
+## Complete Example
+
+```systemverilog
+module sv_003_signed_unsigned;
+
+    logic signed [7:0]   signed_8;
+    logic        [7:0]   unsigned_8;
+
+    logic signed [15:0]  signed_16;
+    logic        [15:0]  unsigned_16;
+
+    initial begin
+        signed_8   = -8'sd5;
+        unsigned_8 = 8'd251;       // Same bits as -5
+
+        // Sign extension: signed value extends with its sign bit
+        signed_16   = signed_8;
+        unsigned_16 = unsigned_8;
+
+        $display("signed_8    = %0d", signed_8);
+        $display("unsigned_8  = %0d", unsigned_8);
+
+        $display("signed_16   = %0d", signed_16);
+        $display("unsigned_16 = %0d", unsigned_16);
+
+        $display("signed 8 + 3   = %0d", signed_8 + 8'sd3);
+        $display("unsigned 8 + 3 = %0d", unsigned_8 + 8'd3);
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+signed_8    = -5
+unsigned_8  = 251
+signed_16   = -5
+unsigned_16 = 251
+signed 8 + 3   = -2
+unsigned 8 + 3 = 254
+```
+
 ## Verification Relevance
 
 Signedness is important in verification because transaction fields,
@@ -122,19 +165,19 @@ may contain both positive and negative values.
 
 Incorrect signedness can cause:
 
-* Unexpected arithmetic results
-* Incorrect comparisons
-* Incorrect sign extension
-* Scoreboard mismatches
-* Incorrect reference-model calculations
+- Unexpected arithmetic results
+- Incorrect comparisons
+- Incorrect sign extension
+- Scoreboard mismatches
+- Incorrect reference-model calculations
 
 ## Key Points to Remember
 
-* `signed` interprets the MSB as a sign bit.
-* `unsigned` treats all bits as magnitude.
-* `logic` is unsigned by default unless declared `signed`.
-* The same binary pattern can represent different signed and
+- `signed` interprets the MSB as a sign bit.
+- `unsigned` treats all bits as magnitude.
+- `logic` is unsigned by default unless declared `signed`.
+- The same binary pattern can represent different signed and
   unsigned values.
-* Sign extension copies the signed value's MSB into the new bits.
-* Zero extension fills added upper bits with `0`.
-* Always check signedness and width when performing arithmetic.
+- Sign extension copies the signed value's MSB into the new bits.
+- Zero extension fills added upper bits with `0`.
+- Always check signedness and width when performing arithmetic.

@@ -86,34 +86,82 @@ This allows one module to be reused with different configurations.
 
 ## `parameter` vs `localparam`
 
-| Feature           | `parameter`          | `localparam`               |
-| ----------------- | -------------------- | -------------------------- |
-| Constant value    | Yes                  | Yes                        |
-| Default value     | Yes                  | Yes                        |
-| Can be overridden | Yes                  | No                         |
-| Common use        | Module configuration | Internal derived constants |
+| Feature | `parameter` | `localparam` |
+|---|---|---|
+| Constant value | Yes | Yes |
+| Default value | Yes | Yes |
+| Can be overridden | Yes | No |
+| Common use | Module configuration | Internal derived constants |
+
+## Complete Example
+
+```systemverilog
+module sv_005_parameters #(
+    parameter int WIDTH = 8,       // Can be overridden
+    parameter int DEPTH = 16
+);
+
+    localparam int ADDR_WIDTH = $clog2(DEPTH); // Cannot be overridden
+
+    logic [WIDTH-1:0] data;
+    logic [ADDR_WIDTH-1:0] address;
+
+    initial begin
+        data    = '1;
+        address = '0;
+
+        $display("WIDTH      = %0d", WIDTH);
+        $display("DEPTH      = %0d", DEPTH);
+        $display("ADDR_WIDTH = %0d", ADDR_WIDTH);
+        $display("data width = %0d bits", $bits(data));
+        $display("addr width = %0d bits", $bits(address));
+    end
+
+endmodule
+
+
+module tb;
+
+    // Override the parameterized values
+    sv_005_parameters #(
+        .WIDTH(16),
+        .DEPTH(64)
+    ) dut ();
+
+endmodule
+```
+
+## Expected Output
+
+```text
+WIDTH      = 16
+DEPTH      = 64
+ADDR_WIDTH = 6
+data width = 16 bits
+addr width = 6 bits
+```
 
 ## Verification Relevance
 
 Parameters are useful in verification for creating reusable testbench
 components and configuring designs with different:
 
-* Data widths
-* FIFO depths
-* Address widths
-* Number of transactions
-* Buffer sizes
-* Protocol configurations
+- Data widths
+- FIFO depths
+- Address widths
+- Number of transactions
+- Buffer sizes
+- Protocol configurations
 
 Parameterized designs reduce duplicated code and make the same
 verification environment easier to reuse with different configurations.
 
 ## Key Points to Remember
 
-* `parameter` defines a configurable constant.
-* Parameters have default values.
-* Module parameters can be overridden during instantiation.
-* `localparam` defines a constant that cannot be overridden.
-* Parameters are commonly used for widths, depths, and configurations.
-* `localparam` is useful for internally derived values.
-* `$clog2()` can be used to calculate address widths from depths.
+- `parameter` defines a configurable constant.
+- Parameters have default values.
+- Module parameters can be overridden during instantiation.
+- `localparam` defines a constant that cannot be overridden.
+- Parameters are commonly used for widths, depths, and configurations.
+- `localparam` is useful for internally derived values.
+- `$clog2()` can be used to calculate address widths from depths.

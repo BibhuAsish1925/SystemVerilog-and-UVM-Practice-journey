@@ -89,28 +89,78 @@ $display("Name: %s | Topic: %s", name, message);
 Formatting is especially useful for readable simulation logs and
 debug messages.
 
+## Complete Example
+
+```systemverilog
+module sv_004_strings;
+
+    string name;
+    string message;
+
+    initial begin
+        // Declaration and assignment
+        name    = "Bibhu";
+        message = "SystemVerilog";
+
+        $display("name    = %s", name);
+        $display("message = %s", message);
+
+        // String methods
+        $display("length  = %0d", message.len());
+
+        message = message.toupper();
+        $display("upper   = %s", message);
+
+        message = message.tolower();
+        $display("lower   = %s", message);
+
+        // Comparison
+        if (name == "Bibhu")
+            $display("comparison = MATCH");
+        else
+            $display("comparison = NO MATCH");
+
+        // Formatting
+        $display("formatted = Name: %s | Topic: %s", name, message);
+    end
+
+endmodule
+```
+
+## Expected Output
+
+```text
+name    = Bibhu
+message = SystemVerilog
+length  = 13
+upper   = SYSTEMVERILOG
+lower   = systemverilog
+comparison = MATCH
+formatted = Name: Bibhu | Topic: systemverilog
+```
+
 ## Verification Relevance
 
 Strings are commonly used in verification for:
 
-* Test and transaction names
-* Debug messages
-* Configuration values
-* File and path information
-* Protocol or command names
-* Simulation log formatting
-* UVM reporting and messages
+- Test and transaction names
+- Debug messages
+- Configuration values
+- File and path information
+- Protocol or command names
+- Simulation log formatting
+- UVM reporting and messages
 
 They are particularly useful when verification code needs to work
 with human-readable information.
 
 ## Key Points to Remember
 
-* Declare strings using `string`.
-* Assign text using double quotes.
-* `len()` returns the string length.
-* `toupper()` converts text to uppercase.
-* `tolower()` converts text to lowercase.
-* `==` and `!=` can be used for string comparison.
-* `%s` is used to format strings with `$display()`.
-* Strings are primarily useful in testbench and verification code.
+- Declare strings using `string`.
+- Assign text using double quotes.
+- `len()` returns the string length.
+- `toupper()` converts text to uppercase.
+- `tolower()` converts text to lowercase.
+- `==` and `!=` can be used for string comparison.
+- `%s` is used to format strings with `$display()`.
+- Strings are primarily useful in testbench and verification code.
