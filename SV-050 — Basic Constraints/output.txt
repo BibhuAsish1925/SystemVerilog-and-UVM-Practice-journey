@@ -1,6 +1,0 @@
-# run 1000ns
-Transaction 1: data = 45 | address = 143
-Transaction 2: data = 15 | address = 146
-Transaction 3: data = 31 | address = 179
-Transaction 4: data = 26 | address = 129
-Transaction 5: data = 32 | address = 175

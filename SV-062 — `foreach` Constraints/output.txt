@@ -1,6 +1,0 @@
-# run 1000ns
-data[0] = 46
-data[1] = 46
-data[2] = 35
-data[3] = 45
-data[4] = 29

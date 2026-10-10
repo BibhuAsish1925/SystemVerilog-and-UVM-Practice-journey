@@ -1,4 +1,0 @@
-# run 1000ns
-WARNING: File: D:/Downloads/Concept practice SV and UVM/sv phase 05/sv phase 05.srcs/sim_1/new/sv_051_randomization_failure.sv Line: 28 : randomize failed to meet constraint.
-Randomization FAILED
-No value satisfies all constraints

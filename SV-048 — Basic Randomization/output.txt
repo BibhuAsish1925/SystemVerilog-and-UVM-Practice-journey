@@ -1,6 +1,0 @@
-# run 1000ns
-Transaction 0: data = 1022094269
-Transaction 0: data = 543839453
-Transaction 0: data = 1227156595
-Transaction 0: data = 1846777798
-Transaction 0: data = 1304007498
