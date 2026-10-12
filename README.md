@@ -2,6 +2,14 @@
 
 A hands-on journey through **SystemVerilog, verification concepts, and UVM**, from fundamentals to complete verification environments.
 
+<table align="center">
+  <tr>
+    <td align="center">
+      <img width="1536" height="1024" alt="image" src="https://github.com/user-attachments/assets/cd6471a6-e7ff-4602-a600-e0be073567be" /><br/>
+      <small>Fig. UVM Architecture</small>
+    </td>
+</table>
+
 ## 📚 Repository Structure
 
 - **Phase 01 — Data Types:** Types, casting, enums, structures, and system functions.
